@@ -3,3 +3,8 @@ c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\bin\
 c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\ResolveAssemblyReference.cache
 c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\Negocio.dll
 c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Negocio\bin\Debug\Negocio.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Negocio\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Negocio\obj\Debug\Negocio.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Negocio\obj\Debug\Negocio.pdb

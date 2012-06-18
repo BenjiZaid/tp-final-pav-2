@@ -96,7 +96,7 @@ namespace DAO
                 SqlCommand cm = new SqlCommand(sql, cn);
                 id = Convert.ToInt32(cm.ExecuteScalar());
             }
-            catch (SqlException e)
+            catch (Exception e)
             {
                 cn.Close();
                 id = 0;

@@ -9,3 +9,14 @@ C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\D
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Controlador.pdb
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Negocio.pdb
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\DAO.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Web.UI.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Web.UI.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Controlador.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Negocio.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\DAO.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Controlador.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\bin\DAO.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\obj\Debug\Web.UI.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Web.UI\obj\Debug\Web.UI.pdb

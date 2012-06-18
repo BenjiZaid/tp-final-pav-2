@@ -86,7 +86,7 @@ namespace Controlador
         public static Negocio.Artista obtenerArtistaPorNombre(string nom)
         {
             DataTable dt;
-            String sql = "Select * From Artista where cod_Artista like '%@nombre%'";
+            String sql = "Select * From Artista where nombre like '%@nombre%' or apellido like '%@nombre%'";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombre", nom));
             dt = DAO.AccesoDatos.consultar(sql, parametros);
@@ -120,13 +120,23 @@ namespace Controlador
             return dt;
         }
 
-        public static DataTable obtenerArtistasPorNombre(string nombre)
+
+        public static DataTable obtenerArtistasPorNombre(string nom)
         {
-            DataTable dt = new DataTable();
-            String sql = "Select * From Artista WHERE nombre LIKE '" + nombre + "'";
-            dt = DAO.AccesoDatos.consultar(sql);
-            return dt;
+            DataTable dt;
+            String sql = "Select * From Artista where nombre like '%@nombre%' or apellido like '%@nombre%'";
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@nombre", nom));
+            dt = DAO.AccesoDatos.consultar(sql, parametros);
+                return dt;
         }
+        //public static DataTable obtenerArtistasPorNombre(string nombre)
+        //{
+        //    DataTable dt = new DataTable();
+        //    String sql = "Select * From Artista WHERE nombre LIKE '" + nombre + "'";
+        //    dt = DAO.AccesoDatos.consultar(sql);
+        //    return dt;
+        //}
 
         public static DataTable obtenerArtistasPorPais(int pais)
         {

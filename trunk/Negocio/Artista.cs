@@ -23,6 +23,13 @@ namespace Negocio
             this.pais = p;
         }
 
+        public Artista(int cod, string nom, Pais p)
+        {
+            this.codigo = cod;
+            this.nombre = nom;
+            this.pais = p;
+        }
+
         public int Codigo
         {
             get { return codigo; }

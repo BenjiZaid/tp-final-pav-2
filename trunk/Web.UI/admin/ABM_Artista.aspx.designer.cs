@@ -121,15 +121,6 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.TextBox txt_Apellido;
         
         /// <summary>
-        /// Control rfv_Apellido_Artista.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_Apellido_Artista;
-        
-        /// <summary>
         /// Control lbl_Valida_Apellido.
         /// </summary>
         /// <remarks>
@@ -155,15 +146,6 @@ namespace Web.UI.admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_FechaNac;
-        
-        /// <summary>
-        /// Control required_FechaNac.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator required_FechaNac;
         
         /// <summary>
         /// Control compare_Formato_Fecha.
