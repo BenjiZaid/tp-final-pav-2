@@ -1,0 +1,5 @@
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\bin\Debug\Negocio.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\bin\Debug\Negocio.pdb
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\ResolveAssemblyReference.cache
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\Negocio.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Negocio\obj\Debug\Negocio.pdb

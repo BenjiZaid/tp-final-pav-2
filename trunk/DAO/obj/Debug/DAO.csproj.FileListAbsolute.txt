@@ -1,0 +1,7 @@
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\DAO.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\DAO.pdb
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\obj\Debug\ResolveAssemblyReference.cache
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\obj\Debug\DAO.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\obj\Debug\DAO.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\Negocio.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\Negocio.pdb
