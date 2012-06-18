@@ -260,26 +260,49 @@ namespace Web.UI.admin
         {
             if (Page.IsValid)
             {
-                int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
-                string nombre = txt_Nombre.Text;
-                string apellido = txt_Apellido.Text;
-                DateTime fechaNac = System.Convert.ToDateTime(txt_FechaNac.Text).Date;
-
-                int cod_Sexo = System.Convert.ToInt32(ddl_Sexo.SelectedValue);
-                Sexo s = SexoManager.obtenerSexo(cod_Sexo);
-                int cod_Pais = System.Convert.ToInt32(ddl_PaisOrigen.SelectedValue);
-                Pais p = PaisManager.obtenerPais(cod_Pais);
-
-                Artista a = new Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
-
-                if (ArtistaManager.guardarArtista(a) == true)
+                if (ddl_Opcion.SelectedItem.Text == "Artista")
                 {
-                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                    int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
+                    string nombre = txt_Nombre.Text;
+                    string apellido = txt_Apellido.Text;
+                    DateTime fechaNac = System.Convert.ToDateTime(txt_FechaNac.Text).Date;
+
+                    int cod_Sexo = System.Convert.ToInt32(ddl_Sexo.SelectedValue);
+                    Sexo s = SexoManager.obtenerSexo(cod_Sexo);
+                    int cod_Pais = System.Convert.ToInt32(ddl_PaisOrigen.SelectedValue);
+                    Pais p = PaisManager.obtenerPais(cod_Pais);
+
+                    Artista a = new Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+
+                    if (ArtistaManager.guardarArtista(a) == true)
+                    {
+                        Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                    }
+                    else
+                    {
+                        Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                    }
                 }
-                else
+
+                if (ddl_Opcion.SelectedItem.Text == "Banda")
                 {
-                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                    int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
+                    string nombre = txt_Nombre.Text;
+                    int cod_Pais = System.Convert.ToInt32(ddl_PaisOrigen.SelectedValue);
+                    Pais p = PaisManager.obtenerPais(cod_Pais);
+
+                    Artista a = new Artista(cod_Artista, nombre, p);
+
+                    if (ArtistaManager.guardarArtista(a) == true)
+                    {
+                        Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                    }
+                    else
+                    {
+                        Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                    }
                 }
+
             }
         }
 

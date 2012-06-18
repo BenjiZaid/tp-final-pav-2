@@ -18,10 +18,20 @@ namespace Controlador
             sql = "Insert into Artista(cod_Artista, apellido, nombre, fecha_Nacimiento, cod_Sexo, pais_Origen) values(@cod_Artista, @apellido, @nombre, @fecha_Nacimiento, @cod_Sexo, @pais_Origen)";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@cod_Artista", a.Codigo));
-            parametros.Add(new SqlParameter("@apellido", a.Apellido));
             parametros.Add(new SqlParameter("@nombre", a.Nombre));
-            parametros.Add(new SqlParameter("@fecha_Nacimiento", a.FechaNacimiento));
-            parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
+            try
+            {
+                parametros.Add(new SqlParameter("@apellido", a.Apellido));
+                parametros.Add(new SqlParameter("@fecha_Nacimiento", a.FechaNacimiento));
+                parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
+            }
+            catch (Exception)
+            {
+                parametros.Add(new SqlParameter("@apellido", null));
+                parametros.Add(new SqlParameter("@fecha_Nacimiento", null));
+                parametros.Add(new SqlParameter("@cod_Sexo", null));
+            }
+            
             parametros.Add(new SqlParameter("@pais_Origen", a.Pais.Codigo));
             b = DAO.AccesoDatos.ejecutar(sql, parametros);
             return b;
