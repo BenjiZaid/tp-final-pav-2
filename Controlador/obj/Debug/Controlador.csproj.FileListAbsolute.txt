@@ -1,0 +1,9 @@
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Controlador.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Controlador.pdb
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\obj\Debug\ResolveAssemblyReference.cache
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\obj\Debug\Controlador.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\obj\Debug\Controlador.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\DAO.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Negocio.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\DAO.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Negocio.pdb

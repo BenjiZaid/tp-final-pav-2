@@ -1,0 +1,11 @@
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Web.UI.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Web.UI.pdb
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\obj\Debug\ResolveAssemblyReference.cache
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\obj\Debug\Web.UI.dll
+c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\obj\Debug\Web.UI.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Controlador.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Negocio.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\DAO.dll
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Controlador.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\Negocio.pdb
+C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Web.UI\bin\DAO.pdb
