@@ -5,3 +5,10 @@ c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\obj\Debu
 c:\users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\obj\Debug\DAO.pdb
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\Negocio.dll
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\DAO\bin\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\bin\Debug\DAO.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\bin\Debug\DAO.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\bin\Debug\Negocio.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\bin\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\obj\Debug\DAO.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\DAO\obj\Debug\DAO.pdb

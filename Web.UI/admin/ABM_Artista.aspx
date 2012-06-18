@@ -35,12 +35,7 @@
 <tr>
 <td style="text-align:right;"><asp:Label ID="lbl_Apellido" runat="server" Text="Apellido: "></asp:Label></td>
 <td><asp:TextBox ID="txt_Apellido" runat="server" Enabled="false"></asp:TextBox></td>
-<td><asp:RequiredFieldValidator 
-    ID="rfv_Apellido_Artista" 
-    runat="server" 
-    ErrorMessage="Debe ingresar el apellido del artista." 
-    ControlToValidate="txt_Apellido" ForeColor="Red">
-    </asp:RequiredFieldValidator>
+<td>
     <br />
     <asp:Label ID="lbl_Valida_Apellido" runat="server" ForeColor="Red"></asp:Label>
 </td>    
@@ -50,14 +45,7 @@
 <td style="text-align:right;"><asp:Label ID="lbl_FechaNac" runat="server" Text="Fecha de Nac.: "></asp:Label></td>
 <td><asp:TextBox ID="txt_FechaNac" runat="server" Enabled="false"></asp:TextBox></td>
 <td>
-    <asp:RequiredFieldValidator 
-        ID="required_FechaNac" 
-        runat="server" 
-        ErrorMessage="Debe ingresar la fecha de nacimiento."
-        ControlToValidate="txt_FechaNac"
-        Display="Dynamic">
-        </asp:RequiredFieldValidator>
-        <br />
+         <br />
         <asp:CompareValidator 
         ID="compare_Formato_Fecha" 
         runat="server" 

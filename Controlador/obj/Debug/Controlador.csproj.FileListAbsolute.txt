@@ -7,3 +7,12 @@ C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Negocio.dll
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\DAO.pdb
 C:\Users\juan\documents\visual studio 2010\Projects\PROYECTO_PAV_II\Controlador\bin\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\Controlador.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\Controlador.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\DAO.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\Negocio.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\DAO.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\bin\Debug\Negocio.pdb
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\obj\Debug\Controlador.dll
+C:\Users\Damian\UTN\2012\PAV2\Trabajo Integrador\Controlador\obj\Debug\Controlador.pdb
