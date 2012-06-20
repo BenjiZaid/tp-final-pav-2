@@ -53,8 +53,12 @@ namespace Web.UI.admin
                             txt_Apellido.Enabled = true;
                             txt_Apellido.Text = a.Apellido;
 
-                            txt_FechaNac.Enabled = true;
-                            txt_FechaNac.Text = a.FechaNacimiento.Date.ToShortDateString();
+                            txt_dia.Enabled = true;
+                            txt_dia.Text = a.FechaNacimiento.Date.Day.ToString();
+                            txt_mes.Enabled = true;
+                            txt_mes.Text=a.FechaNacimiento.Date.Month.ToString();
+                            txt_año.Enabled = true;
+                            txt_año.Text=a.FechaNacimiento.Date.Year.ToString();
 
                             cargarCombo(ddl_Sexo);
                             ddl_Sexo.Enabled = true;
@@ -126,29 +130,38 @@ namespace Web.UI.admin
         }
         protected void ddl_Opcion_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddl_Opcion.SelectedValue == "1")
+            if (ddl_Opcion.SelectedItem.Text == "Artista")
             {
                 lbl_Nombre.Text = "Artista: ";
                 txt_Nombre.Enabled = true;
                 ddl_PaisOrigen.Enabled = true;
                 txt_Apellido.Enabled = true;
                 txt_Apellido.CausesValidation = true;
-                txt_FechaNac.Enabled = true;
-                txt_FechaNac.CausesValidation = true;
+                txt_dia.Enabled = true;
+                txt_mes.Enabled = true;
+                txt_año.Enabled = true;
+                txt_dia.CausesValidation = true;
+                txt_mes.CausesValidation = true;
+                txt_año.CausesValidation = true;
                 ddl_Sexo.Enabled = true;
                 ddl_Sexo.CausesValidation = true;
                 cargarCombo(ddl_Sexo);
+                
             }
 
-            if (ddl_Opcion.SelectedValue == "2")
+            if (ddl_Opcion.SelectedItem.Text == "Banda")
             {
                 lbl_Nombre.Text = "Banda: ";
                 txt_Nombre.Enabled = true;
                 ddl_PaisOrigen.Enabled = true;
                 txt_Apellido.Enabled = false;
                 txt_Apellido.CausesValidation = false;
-                txt_FechaNac.Enabled = false;
-                txt_FechaNac.CausesValidation = false;
+                txt_dia.Enabled = true;
+                txt_mes.Enabled = true;
+                txt_año.Enabled = true;
+                txt_dia.CausesValidation = true;
+                txt_mes.CausesValidation = true;
+                txt_año.CausesValidation = true;
                 ddl_Sexo.Enabled = false;
                 ddl_Sexo.CausesValidation = false;
             }
@@ -212,7 +225,11 @@ namespace Web.UI.admin
                 int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
                 string nombre = txt_Nombre.Text;
                 string apellido = txt_Apellido.Text;
-                DateTime fechaNac = System.Convert.ToDateTime(txt_FechaNac.Text).Date;
+                DateTime fechaNac = new DateTime();
+                fechaNac.AddDays(Convert.ToInt32(txt_dia.Text));
+                fechaNac.AddMonths(Convert.ToInt32(txt_mes.Text));
+                fechaNac.AddYears(Convert.ToInt32(txt_año.Text));
+
 
                 int sexo = ddl_Sexo.SelectedIndex;
                 Sexo s = Controlador.SexoManager.obtenerSexo(sexo + 1);
@@ -238,7 +255,9 @@ namespace Web.UI.admin
         {
             txt_Nombre.Text = "";
             txt_Apellido.Text = "";
-            txt_FechaNac.Text = "";
+            txt_año.Text = "";
+            txt_mes.Text = "";
+            txt_dia.Text = "";
             ddl_PaisOrigen.SelectedIndex = 0;
             ddl_Sexo.SelectedIndex = 0;
         }
@@ -247,6 +266,7 @@ namespace Web.UI.admin
         {
             if (ddl_Sexo.SelectedValue == "0") args.IsValid = false;
             else { args.IsValid = true; }
+
         }
 
         protected void required_Pais_ServerValidate(object source, ServerValidateEventArgs args)
@@ -265,7 +285,7 @@ namespace Web.UI.admin
                     int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
                     string nombre = txt_Nombre.Text;
                     string apellido = txt_Apellido.Text;
-                    DateTime fechaNac = System.Convert.ToDateTime(txt_FechaNac.Text).Date;
+                    DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
 
                     int cod_Sexo = System.Convert.ToInt32(ddl_Sexo.SelectedValue);
                     Sexo s = SexoManager.obtenerSexo(cod_Sexo);
@@ -289,9 +309,10 @@ namespace Web.UI.admin
                     int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
                     string nombre = txt_Nombre.Text;
                     int cod_Pais = System.Convert.ToInt32(ddl_PaisOrigen.SelectedValue);
+                    DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
                     Pais p = PaisManager.obtenerPais(cod_Pais);
 
-                    Artista a = new Artista(cod_Artista, nombre, p);
+                    Artista a = new Artista(cod_Artista, nombre, fechaNac, p);
 
                     if (ArtistaManager.guardarArtista(a) == true)
                     {

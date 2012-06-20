@@ -23,10 +23,11 @@ namespace Negocio
             this.pais = p;
         }
 
-        public Artista(int cod, string nom, Pais p)
+        public Artista(int cod, string nom, DateTime fechaN, Pais p)
         {
             this.codigo = cod;
             this.nombre = nom;
+            this.fechaNacimiento = fechaN;
             this.pais = p;
         }
 
