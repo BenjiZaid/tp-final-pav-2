@@ -36,7 +36,6 @@
 <td style="text-align:right;"><asp:Label ID="lbl_Apellido" runat="server" Text="Apellido: "></asp:Label></td>
 <td style="text-align:left;"><asp:TextBox ID="txt_Apellido" runat="server" Enabled="false"></asp:TextBox></td>
 <td>
-    <br />
     <asp:Label ID="lbl_Valida_Apellido" runat="server" ForeColor="Red"></asp:Label>
 </td>    
 </tr>
@@ -44,7 +43,7 @@
 <tr>
 <td style="text-align:right;" width="100"><asp:Label ID="lbl_FechaNac" runat="server" 
         Text="Fecha de Nac.: "></asp:Label></td>
-<td style="text-align:left;" width="200">
+<td style="text-align:left;" width="240">
 <asp:Label ID="Label2" runat="server" Text="Día: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_dia" runat="server" Enabled="false" Width="25px" 
         ValidationGroup="fecha"></asp:TextBox> 
@@ -61,21 +60,18 @@
     ErrorMessage="Debe Ingresar un Día" 
     ControlToValidate="txt_dia"
     ValidationGroup="fecha" ForeColor ="Red"></asp:RequiredFieldValidator>
-    <br />
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-        ControlToValidate="txt_año" ErrorMessage="Debe Ingresar un Año" ForeColor="Red"></asp:RequiredFieldValidator>
-    <br />
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-        ControlToValidate="txt_mes" ErrorMessage="Debe Ingresar un Mes" ForeColor="Red"></asp:RequiredFieldValidator>
-    <br />
-    &nbsp;<asp:RangeValidator ID="RangeValidator1" runat="server" 
+    <asp:RangeValidator ID="RangeValidator1" runat="server" 
         ControlToValidate="txt_dia" ErrorMessage="Ingrese un día válido" 
         ForeColor="Red" MaximumValue="31" MinimumValue="1" Type="Integer"></asp:RangeValidator>
     <br />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+        ControlToValidate="txt_año" ErrorMessage="Debe Ingresar un Año" ForeColor="Red"></asp:RequiredFieldValidator>
     <asp:RangeValidator ID="RangeValidator2" runat="server" 
         ControlToValidate="txt_mes" ErrorMessage="Ingrese un mes válido" 
         ForeColor="Red" MaximumValue="12" MinimumValue="1" Type="Integer"></asp:RangeValidator>
     <br />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+        ControlToValidate="txt_mes" ErrorMessage="Debe Ingresar un Mes" ForeColor="Red"></asp:RequiredFieldValidator>
     <asp:RangeValidator ID="RangeValidator3" runat="server" 
         ControlToValidate="txt_año" ErrorMessage="Ingrese un año válido" 
         ForeColor="Red" MaximumValue="2012" MinimumValue="1900" Type="Integer"></asp:RangeValidator>
@@ -171,7 +167,7 @@
 <asp:Panel ID="pnl_Botones_Agregar" runat="server" Visible="false" HorizontalAlign="Center">
 <table>
 <tr>
-<td style="text-align:center; width:227px;">
+<td style="text-align:center; width:271px;">
     <asp:Button ID="btn_Agregar" runat="server" Text="Agregar" 
         onclick="btn_Agregar_Click" />
     &nbsp;
@@ -183,7 +179,7 @@
 <asp:Panel ID="pnl_Botones_Modificar" runat="server" Visible="false" HorizontalAlign="Center">
 <table>
 <tr>
-<td style="text-align:center; width:227px;">
+<td style="text-align:center; width:282px;">
     <asp:Button ID="btn_Modificar" runat="server" Text="Modificar" 
         onclick="btn_Modificar_Click" />
     &nbsp;
@@ -191,6 +187,8 @@
 </tr>
 </table>
 </asp:Panel>
+
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
 <asp:Panel ID ="pnl_Informacion" HorizontalAlign="Center" runat="server" Visible="false">
 <asp:Label ID = "lbl_Mensaje" ForeColor="Green" runat="server" Font-Size="Medium"></asp:Label>
