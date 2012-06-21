@@ -50,8 +50,7 @@ namespace DAO
             try
             {
                 SqlCommand cm = new SqlCommand(sql, cn);
-                SqlDataAdapter da = new SqlDataAdapter(cm);
-                da.Fill(dta);
+                dta.Load(cm.ExecuteReader());
                 cn.Close();
             }
             catch (SqlException e)
@@ -76,8 +75,7 @@ namespace DAO
                 {
                     cm.Parameters.Add(item);
                 }
-                SqlDataAdapter da = new SqlDataAdapter(cm);
-                da.Fill(dt);
+                dt.Load(cm.ExecuteReader());
                 cn.Close();
             }
             catch (SqlException e)

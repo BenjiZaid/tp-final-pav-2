@@ -262,12 +262,13 @@ namespace Web.UI.admin
             {
                 DataTable dt = new DataTable();
                 dt = SexoManager.obtenerTodos();
+
                 ddl.DataSource = dt;
                 ddl.DataTextField = "descripcion";
                 ddl.DataValueField = "cod_Sexo";
                 ddl.DataBind();
-                ddl.Items.Add(new ListItem("--Seleccione una opcion--","0"));
-                ddl.SelectedValue = "0";
+                ddl.Items.Add("--Seleccione una opcion--");
+                ddl.SelectedValue = "--Seleccione una opcion--";
             }
             
 
@@ -275,12 +276,14 @@ namespace Web.UI.admin
             {
                 DataTable dt = new DataTable();
                 dt = PaisManager.obtenerTodos();
+
+                
                 ddl.DataSource = dt;
                 ddl.DataTextField = "descripcion";
                 ddl.DataValueField = "cod_Pais";
                 ddl.DataBind();
-                ddl.Items.Add(new ListItem("--Seleccione una opcion--", "0"));
-                ddl.SelectedValue = "0";
+                ddl.Items.Add("--Seleccione una opcion--");
+                ddl.SelectedValue = "--Seleccione una opcion--";
             }
 
 
@@ -290,9 +293,9 @@ namespace Web.UI.admin
             DataTable dt = new DataTable();
 
 
-            if (txt_Buscar_Nombre.Text != "" && ddl_Buscar_Pais.SelectedIndex != 0)
+            if (txt_Buscar_Nombre.Text != "" && ddl_Buscar_Pais.SelectedItem.Text != "--Seleccione una opcion--")
             {
-                dt = ArtistaManager.obtenerArtistasPorNombreYPais(txt_Buscar_Nombre.Text, ddl_Buscar_Pais.SelectedIndex);
+                dt = ArtistaManager.obtenerArtistasPorNombreYPais(txt_Buscar_Nombre.Text, ddl_Buscar_Pais.SelectedIndex+1);
                 gv_Buscar.DataSource = dt;
                 gv_Buscar.DataBind();
             }
@@ -304,18 +307,21 @@ namespace Web.UI.admin
                 gv_Buscar.DataBind();
             }
 
-            
-            
-            if (ddl_Buscar_Pais.SelectedIndex != 0)
+
+
+            if (ddl_Buscar_Pais.SelectedItem.Text != "--Seleccione una opcion--")
             {
-                dt = ArtistaManager.obtenerArtistasPorPais(ddl_Buscar_Pais.SelectedIndex);
+                dt = ArtistaManager.obtenerArtistasPorPais(ddl_Buscar_Pais.SelectedIndex+1);
                 gv_Buscar.DataSource = dt;
                 gv_Buscar.DataBind();
             }
 
-            dt = ArtistaManager.obtenerTodos();
-            gv_Buscar.DataSource = dt;
-            gv_Buscar.DataBind();
+            if (txt_Buscar_Nombre.Text == "" && ddl_Buscar_Pais.SelectedItem.Text == "--Seleccione una opcion--")
+            {
+                dt = ArtistaManager.obtenerTodos();
+                gv_Buscar.DataSource = dt;
+                gv_Buscar.DataBind();
+            }
 
         }
 

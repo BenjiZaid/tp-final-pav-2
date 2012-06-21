@@ -17,12 +17,12 @@ namespace Controlador
             //int id = DAO.AccesoDatos.ultimoId("Artista") + 1;
             
             List<SqlParameter> parametros = new List<SqlParameter>();
-            if (a.Apellido == null && a.Sexo == null)
+            if (a.Apellido == null || a.Apellido=="" && a.Sexo == null)
             {
                 sql = "Insert into Artista(cod_Artista, nombre, fecha_Nacimiento, pais_Origen) values(@cod_Artista, @nombre, @fecha_Nacimiento, @pais_Origen)";
             }
 
-            if (a.Apellido == null)
+            if (a.Apellido == null || a.Apellido=="")
             {
                 sql = "Insert into Artista(cod_Artista, nombre, fecha_Nacimiento, pais_Origen) values(@cod_Artista, @nombre, @fecha_Nacimiento, @pais_Origen)";
                 parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
@@ -47,12 +47,12 @@ namespace Controlador
             String sql;
             Boolean b = false;
             List<SqlParameter> parametros = new List<SqlParameter>();
-            if (a.Apellido == null && a.Sexo == null)
+            if (a.Apellido == null || a.Apellido=="" && a.Sexo == null)
             {
                 sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
             }
 
-            if (a.Apellido==null)
+            if (a.Apellido==null || a.Apellido=="")
             {
                 sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
                 parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
@@ -171,7 +171,7 @@ namespace Controlador
         public static DataTable obtenerArtistasPorNombre(string nom)
         {
             DataTable dt;
-            String sql = "Select * From Artista where nombre like '%@nombre%' or apellido like '%@nombre%'";
+            String sql = "Select * From Artista where nombre like '%'+@nombre+'%' or apellido like '%'+@nombre+'%'";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombre", nom));
             dt = DAO.AccesoDatos.consultar(sql, parametros);
