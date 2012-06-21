@@ -139,13 +139,13 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.Label lbl_FechaNac;
         
         /// <summary>
-        /// Control Label2.
+        /// Control lbl_dia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbl_dia;
         
         /// <summary>
         /// Control txt_dia.
@@ -157,13 +157,13 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.TextBox txt_dia;
         
         /// <summary>
-        /// Control Label3.
+        /// Control lbl_mes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lbl_mes;
         
         /// <summary>
         /// Control txt_mes.
@@ -175,13 +175,13 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.TextBox txt_mes;
         
         /// <summary>
-        /// Control Label4.
+        /// Control lbl_año.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lbl_año;
         
         /// <summary>
         /// Control txt_año.
@@ -328,13 +328,13 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.Panel pnl_Buscar;
         
         /// <summary>
-        /// Control chk_Buscar.
+        /// Control Label5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chk_Buscar;
+        protected global::System.Web.UI.WebControls.Label Label5;
         
         /// <summary>
         /// Control txt_Buscar_Nombre.
@@ -344,6 +344,15 @@ namespace Web.UI.admin {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_Buscar_Nombre;
+        
+        /// <summary>
+        /// Control Label6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label6;
         
         /// <summary>
         /// Control ddl_Buscar_Pais.

@@ -25,8 +25,7 @@
     ID="rfv_Nombre_Artista" 
     runat="server" 
     ErrorMessage="Debe ingresar el nombre del artista o banda." 
-    ControlToValidate="txt_Nombre" ForeColor="Red">
-    </asp:RequiredFieldValidator>
+    ControlToValidate="txt_Nombre" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
     <br />
     <asp:Label ID="lbl_Valida_Nombre" runat="server" ForeColor="Red"></asp:Label>
 </td>
@@ -44,13 +43,13 @@
 <td style="text-align:right;" width="100"><asp:Label ID="lbl_FechaNac" runat="server" 
         Text="Fecha de Nac.: "></asp:Label></td>
 <td style="text-align:left;" width="240">
-<asp:Label ID="Label2" runat="server" Text="Día: " Height="20px"></asp:Label>
+<asp:Label ID="lbl_dia" runat="server" Text="Día: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_dia" runat="server" Enabled="false" Width="25px" 
         ValidationGroup="fecha"></asp:TextBox> 
-<asp:Label ID="Label3" runat="server" Text="Mes: " Height="20px"></asp:Label>
+<asp:Label ID="lbl_mes" runat="server" Text="Mes: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_mes" runat="server" Enabled="false" Width="25px" 
         ValidationGroup="fecha"></asp:TextBox>
-<asp:Label ID="Label4" runat="server" Text="Año: " Height="20px"></asp:Label>
+<asp:Label ID="lbl_año" runat="server" Text="Año: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_año" runat="server" Enabled="false" Width="40px" 
         ValidationGroup="fecha"></asp:TextBox></td>
 <td>
@@ -59,22 +58,27 @@
     runat="server" 
     ErrorMessage="Debe Ingresar un Día" 
     ControlToValidate="txt_dia"
-    ValidationGroup="fecha" ForeColor ="Red"></asp:RequiredFieldValidator>
+    ValidationGroup="fecha" ForeColor ="Red" Display="None"></asp:RequiredFieldValidator>
     <asp:RangeValidator ID="RangeValidator1" runat="server" 
         ControlToValidate="txt_dia" ErrorMessage="Ingrese un día válido" 
-        ForeColor="Red" MaximumValue="31" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+        ForeColor="Red" MaximumValue="31" MinimumValue="1" Type="Integer" 
+        Display="None"></asp:RangeValidator>
     <br />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
-        ControlToValidate="txt_año" ErrorMessage="Debe Ingresar un Año" ForeColor="Red"></asp:RequiredFieldValidator>
+        ControlToValidate="txt_año" ErrorMessage="Debe Ingresar un Año" 
+        ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
     <asp:RangeValidator ID="RangeValidator2" runat="server" 
         ControlToValidate="txt_mes" ErrorMessage="Ingrese un mes válido" 
-        ForeColor="Red" MaximumValue="12" MinimumValue="1" Type="Integer"></asp:RangeValidator>
+        ForeColor="Red" MaximumValue="12" MinimumValue="1" Type="Integer" 
+        Display="None"></asp:RangeValidator>
     <br />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
-        ControlToValidate="txt_mes" ErrorMessage="Debe Ingresar un Mes" ForeColor="Red"></asp:RequiredFieldValidator>
+        ControlToValidate="txt_mes" ErrorMessage="Debe Ingresar un Mes" 
+        ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
     <asp:RangeValidator ID="RangeValidator3" runat="server" 
         ControlToValidate="txt_año" ErrorMessage="Ingrese un año válido" 
-        ForeColor="Red" MaximumValue="2012" MinimumValue="1900" Type="Integer"></asp:RangeValidator>
+        ForeColor="Red" MaximumValue="2012" MinimumValue="1900" Type="Integer" 
+        Display="None"></asp:RangeValidator>
     </td>    
 </tr>
 
@@ -86,7 +90,8 @@
          runat="server" 
          ErrorMessage="Debe seleccionar un sexo."
          ControlToValidate="ddl_Sexo" 
-        onservervalidate="required_Sexo_ServerValidate" ForeColor="Red"></asp:CustomValidator>
+        onservervalidate="required_Sexo_ServerValidate" ForeColor="Red" 
+        Display="None"></asp:CustomValidator>
     <asp:Label ID="Label1" runat="server" ForeColor="Red"></asp:Label> 
 </td>    
 </tr>
@@ -100,7 +105,8 @@
          runat="server" 
          ErrorMessage="Debe seleccionar un país."
          ControlToValidate="ddl_PaisOrigen" 
-        onservervalidate="required_Pais_ServerValidate" ForeColor="Red"></asp:CustomValidator>
+        onservervalidate="required_Pais_ServerValidate" ForeColor="Red" 
+        Display="None"></asp:CustomValidator>
     <asp:Label ID="lbl_Pais" runat="server" ForeColor="Red"></asp:Label>
 </td>    
 </tr>
@@ -113,17 +119,21 @@
 <asp:Panel ID="pnl_Buscar" runat="server" Visible="false" HorizontalAlign="Center">
 <table>
 <tr>
-<td rowspan="2" align="left">
-    <asp:CheckBoxList ID="chk_Buscar" runat="server">
-    <asp:ListItem Text="Nombre" Value="chk_Nombre"></asp:ListItem>
-    <asp:ListItem Text="Pais de origen" Value="chk_PaisOrigen"></asp:ListItem>
-    </asp:CheckBoxList>
+<td rowspan="2" align="right">
+    <br />
 </td>
-<td><asp:TextBox ID="txt_Buscar_Nombre" runat="server"></asp:TextBox></td>
+<td align="left">
+    <asp:Label ID="Label5" runat="server" Height="20px" Text="Nombre "></asp:Label>
+    &nbsp;&nbsp; <asp:TextBox ID="txt_Buscar_Nombre" runat="server"></asp:TextBox></td>
 </tr>
 
 <tr>
-<td><asp:DropDownList ID="ddl_Buscar_Pais" runat="server"></asp:DropDownList></td>
+<td style="height: 2px" align="left">
+    <asp:Label ID="Label6" runat="server" Height="20px" Text="País"></asp:Label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:DropDownList ID="ddl_Buscar_Pais" runat="server">
+    </asp:DropDownList>
+    </td>
 </tr>
 
 <tr>
@@ -188,7 +198,7 @@
 </table>
 </asp:Panel>
 
-    <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
 
 <asp:Panel ID ="pnl_Informacion" HorizontalAlign="Center" runat="server" Visible="false">
 <asp:Label ID = "lbl_Mensaje" ForeColor="Green" runat="server" Font-Size="Medium"></asp:Label>

@@ -39,13 +39,23 @@ namespace Controlador
         {
             String sql;
             Boolean b = false;
-            sql = "Update Artista set apellido = @apellido, nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
             List<SqlParameter> parametros = new List<SqlParameter>();
+            if (a.Apellido == "" && a.Sexo == null)
+            {
+                sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
+            }
+
+            else
+            {
+                sql = "Update Artista set apellido = @apellido, nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
+                parametros.Add(new SqlParameter("@apellido", a.Apellido));
+                parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
+            }
+
+            
             parametros.Add(new SqlParameter("@cod_Artista", a.Codigo));
-            parametros.Add(new SqlParameter("@apellido", a.Apellido));
             parametros.Add(new SqlParameter("@nombre", a.Nombre));
-            parametros.Add(new SqlParameter("@fecha_Nacimiento", a.FechaNacimiento));
-            parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
+            parametros.Add(new SqlParameter("@fecha_Nacimiento", a.FechaNacimiento));            
             parametros.Add(new SqlParameter("@pais_Origen", a.Pais.Codigo));
             b = DAO.AccesoDatos.ejecutar(sql, parametros);
             return b;
@@ -68,20 +78,36 @@ namespace Controlador
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@codigo", codigo));
             dt = DAO.AccesoDatos.consultar(sql, parametros);
+            Negocio.Artista a = new Negocio.Artista(); ;
             if (dt.Rows.Count > 0)
             {
-                int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
-                String nombre = (String)dt.Rows[0]["nombre"];
-                String apellido = (String)dt.Rows[0]["apellido"];
-                DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
 
-                int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
-                Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
+                if (dt.Rows[0]["apellido"] != null)
+                {
+                    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                    String nombre = (String)dt.Rows[0]["nombre"];
+                    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                    a = new Negocio.Artista(cod_Artista, nombre, fechaNac, p);
+                }
+                else 
+                {
+                    
 
-                int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
-                Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                    String nombre = (String)dt.Rows[0]["nombre"];
+                    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                    String apellido = (String)dt.Rows[0]["apellido"];
+                    int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
+                    Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
+                    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                    a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                }
+                
 
-                Negocio.Artista a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                
                 return a;
             }
             else
@@ -149,8 +175,18 @@ namespace Controlador
         public static DataTable obtenerArtistasPorPais(int pais)
         {
             DataTable dt = new DataTable();
-            String sql = "Select * From Artista WHERE cod_Pais = " + pais;
+            String sql = "Select * From Artista WHERE pais_Origen = " + pais;
             dt = DAO.AccesoDatos.consultar(sql);
+            return dt;
+        }
+
+        public static DataTable obtenerArtistasPorNombreYPais(string nom, int pais)
+        {
+            DataTable dt;
+            String sql = "Select * From Artista where nombre like '%@nombre%' or apellido like '%@nombre%' and pais_Origen =  "+pais;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@nombre", nom));
+            dt = DAO.AccesoDatos.consultar(sql, parametros);
             return dt;
         }
 

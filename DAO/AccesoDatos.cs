@@ -65,17 +65,19 @@ namespace DAO
         public static DataTable consultar(String sql, List<SqlParameter> parametros)
         {
 
+            
+            DataTable dt = new DataTable();
             SqlConnection cn = conexion();
-            DataTable dta = new DataTable();
             try
             {
+                
                 SqlCommand cm = new SqlCommand(sql, cn);
                 foreach (SqlParameter item in parametros)
                 {
                     cm.Parameters.Add(item);
                 }
                 SqlDataAdapter da = new SqlDataAdapter(cm);
-                da.Fill(dta);
+                da.Fill(dt);
                 cn.Close();
             }
             catch (SqlException e)
@@ -83,7 +85,7 @@ namespace DAO
                 cn.Close();
                 Console.WriteLine(e.Message);
             }
-            return dta;
+            return dt;
         }
 
         public static int ultimoId(String sql)
