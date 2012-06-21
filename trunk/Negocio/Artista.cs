@@ -13,6 +13,8 @@ namespace Negocio
         private Sexo sexo;
         private Pais pais;
 
+        public Artista() { }
+
         public Artista(int cod, string nom, string ap, DateTime fecNac, Sexo sx, Pais p)
         {
             this.codigo = cod;

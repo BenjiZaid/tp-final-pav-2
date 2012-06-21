@@ -18,9 +18,34 @@ namespace Web.UI.admin
         {
             if (!IsPostBack)
             {
+               
+                ddl_Sexo.Visible = false;
+                txt_Apellido.Visible = false;
+                lbl_Apellido.Visible = false;
+                lbl_Sexo.Visible = false;
+                lbl_Nombre.Visible = false;
+                txt_Nombre.Visible = false;
+                lbl_FechaNac.Visible = false;
+                txt_dia.Visible = false;
+                txt_mes.Visible = false;
+                txt_año.Visible = false;
+                lbl_dia.Visible = false;
+                lbl_mes.Visible = false;
+                lbl_año.Visible = false;
+                ddl_PaisOrigen.Visible = false;
+                lbl_PaisOrigen.Visible = false;
+                btn_Agregar.Visible = false;
+
+
+
                 if (Request.QueryString["accion"] != null)
                 {
                     accion = Request.QueryString["accion"].ToString();
+
+                    ddl_Opcion.Items.Add(new ListItem("--Seleccione una opcion--", "0"));
+                    ddl_Opcion.Items.Add(new ListItem("Artista", "1"));
+                    ddl_Opcion.Items.Add(new ListItem("Banda", "2"));
+                    ddl_Opcion.SelectedIndex = 0;
 
                     if (accion.Equals("agregar"))
                     {
@@ -46,12 +71,10 @@ namespace Web.UI.admin
                             Artista a;
                             a = ArtistaManager.obtenerArtistaPorCodigo(Convert.ToInt32(lbl_Nro_Codigo.Text));
 
-
+                            if (a.Apellido != null) ddl_Opcion.SelectedIndex = 1;
+                            else {ddl_Opcion.SelectedIndex = 2;}
                             txt_Nombre.Enabled = true;
-                            txt_Nombre.Text = a.Nombre;
-
-                            txt_Apellido.Enabled = true;
-                            txt_Apellido.Text = a.Apellido;
+                            txt_Nombre.Text = a.Nombre;                                                      
 
                             txt_dia.Enabled = true;
                             txt_dia.Text = a.FechaNacimiento.Date.Day.ToString();
@@ -60,9 +83,24 @@ namespace Web.UI.admin
                             txt_año.Enabled = true;
                             txt_año.Text=a.FechaNacimiento.Date.Year.ToString();
 
-                            cargarCombo(ddl_Sexo);
-                            ddl_Sexo.Enabled = true;
-                            ddl_Sexo.SelectedValue = System.Convert.ToString(a.Sexo.Codigo);
+                            if (a.Apellido == null & a.Sexo == null)
+                            {
+                                ddl_Sexo.Enabled = false;
+                                ddl_Sexo.Visible = false;
+                                txt_Apellido.Enabled = false;
+                                txt_Apellido.Visible = false;
+                                lbl_Apellido.Visible = false;
+                                lbl_Sexo.Visible = false;
+                            }
+                            else 
+                            {
+                                cargarCombo(ddl_Sexo);
+                                ddl_Sexo.Enabled = true;
+                                ddl_Sexo.SelectedValue = System.Convert.ToString(a.Sexo.Codigo);
+                                txt_Apellido.Enabled = true;
+                                txt_Apellido.Text = a.Apellido;
+                            }
+                            
 
                             cargarCombo(ddl_PaisOrigen);
                             ddl_PaisOrigen.Enabled = true;
@@ -75,7 +113,8 @@ namespace Web.UI.admin
                         {
                             lbl_Accion.Text = "Modificar Artista/Banda";
                             pnl_Buscar.Visible = true;
-
+                            cargarCombo(ddl_Buscar_Pais);
+                            
                         }
                     }
                     else if (accion.Equals("informar"))
@@ -100,12 +139,10 @@ namespace Web.UI.admin
                     {
                         lbl_Accion.Text = "Eliminar Artista/Banda";
                         pnl_Buscar.Visible = true;
+                        
                     }
 
-                    ddl_Opcion.Items.Add(new ListItem("--Seleccione una opcion--", "0"));
-                    ddl_Opcion.Items.Add(new ListItem("Artista", "1"));
-                    ddl_Opcion.Items.Add(new ListItem("Banda", "2"));
-                    ddl_Opcion.SelectedIndex = 0;
+                   
                 }
             }
         }
@@ -123,7 +160,7 @@ namespace Web.UI.admin
                     break;
                     case "Eliminar":
                     //Eliminar pidiendo confirmacion, ojo con los cd's del artista
-                    // si tiene alguno tendria que eliminarse tmabien
+                    // si tiene alguno tendria que eliminarse tambien
                     //Volver a cargar la grilla
                     break;
             }
@@ -132,38 +169,85 @@ namespace Web.UI.admin
         {
             if (ddl_Opcion.SelectedItem.Text == "Artista")
             {
+                lbl_Nombre.Visible = true;
                 lbl_Nombre.Text = "Artista: ";
+                txt_Nombre.Visible = true;
                 txt_Nombre.Enabled = true;
+
+                ddl_PaisOrigen.Visible = true;
                 ddl_PaisOrigen.Enabled = true;
+
+                lbl_Apellido.Visible = true;
+                txt_Apellido.Visible = true;
                 txt_Apellido.Enabled = true;
                 txt_Apellido.CausesValidation = true;
+
+
+                lbl_FechaNac.Visible = true;
+                txt_dia.Visible = true;
+                txt_mes.Visible = true;
+                txt_año.Visible = true;
                 txt_dia.Enabled = true;
                 txt_mes.Enabled = true;
                 txt_año.Enabled = true;
+                lbl_dia.Visible = true;
+                lbl_mes.Visible = true;
+                lbl_año.Visible = true;
+                
+
                 txt_dia.CausesValidation = true;
                 txt_mes.CausesValidation = true;
                 txt_año.CausesValidation = true;
+
+                lbl_Sexo.Visible = true;
+                ddl_Sexo.Visible = true;
                 ddl_Sexo.Enabled = true;
                 ddl_Sexo.CausesValidation = true;
+                                
+                
+                
+                ddl_PaisOrigen.Visible = true;
+                lbl_PaisOrigen.Visible = true;
+                ddl_PaisOrigen.Enabled = true;
+                btn_Agregar.Visible = true;
+
                 cargarCombo(ddl_Sexo);
                 
             }
 
             if (ddl_Opcion.SelectedItem.Text == "Banda")
             {
+                lbl_Nombre.Visible = true;
                 lbl_Nombre.Text = "Banda: ";
+                txt_Nombre.Visible = true;
                 txt_Nombre.Enabled = true;
-                ddl_PaisOrigen.Enabled = true;
-                txt_Apellido.Enabled = false;
-                txt_Apellido.CausesValidation = false;
+
+                lbl_FechaNac.Visible = true;
+                lbl_dia.Visible = true;
+                lbl_mes.Visible = true;
+                lbl_año.Visible = true;
+                txt_dia.Visible = true;
+                txt_mes.Visible = true;
+                txt_año.Visible = true;
                 txt_dia.Enabled = true;
                 txt_mes.Enabled = true;
                 txt_año.Enabled = true;
                 txt_dia.CausesValidation = true;
                 txt_mes.CausesValidation = true;
                 txt_año.CausesValidation = true;
-                ddl_Sexo.Enabled = false;
-                ddl_Sexo.CausesValidation = false;
+
+                ddl_Sexo.Visible = false;
+                lbl_Sexo.Visible = false;
+
+                ddl_PaisOrigen.Visible = true;
+                ddl_PaisOrigen.Enabled = true;
+                lbl_PaisOrigen.Visible = true;
+                btn_Agregar.Enabled = true;
+
+                lbl_Apellido.Visible = false;
+                txt_Apellido.Visible = false;
+                btn_Agregar.Visible = true;
+
             }
 
             cargarCombo(ddl_PaisOrigen);
@@ -185,9 +269,9 @@ namespace Web.UI.admin
                 ddl.Items.Add(new ListItem("--Seleccione una opcion--","0"));
                 ddl.SelectedValue = "0";
             }
+            
 
-
-            if (ddl.ID.Equals("ddl_PaisOrigen"))
+            if (ddl.ID.Equals("ddl_PaisOrigen") || ddl.ID.Equals("ddl_Buscar_Pais"))
             {
                 DataTable dt = new DataTable();
                 dt = PaisManager.obtenerTodos();
@@ -198,24 +282,41 @@ namespace Web.UI.admin
                 ddl.Items.Add(new ListItem("--Seleccione una opcion--", "0"));
                 ddl.SelectedValue = "0";
             }
+
+
         }
         protected void btn_Buscar_Click(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
 
-            if (chk_Buscar.SelectedValue.ToString().Equals("chk_Nombre"))
+
+            if (txt_Buscar_Nombre.Text != "" && ddl_Buscar_Pais.SelectedIndex != 0)
+            {
+                dt = ArtistaManager.obtenerArtistasPorNombreYPais(txt_Buscar_Nombre.Text, ddl_Buscar_Pais.SelectedIndex);
+                gv_Buscar.DataSource = dt;
+                gv_Buscar.DataBind();
+            }
+
+            if (txt_Buscar_Nombre.Text != "")
             {
                 dt = ArtistaManager.obtenerArtistasPorNombre(txt_Buscar_Nombre.Text);
                 gv_Buscar.DataSource = dt;
                 gv_Buscar.DataBind();
-            }          
+            }
 
-            //    default:
-            //        dt = ArtistaManager.obtenerTodos();
-            //        gv_Buscar.DataSource = dt;
-            //        gv_Buscar.DataBind();
-            //        break;
-            //}
+            
+            
+            if (ddl_Buscar_Pais.SelectedIndex != 0)
+            {
+                dt = ArtistaManager.obtenerArtistasPorPais(ddl_Buscar_Pais.SelectedIndex);
+                gv_Buscar.DataSource = dt;
+                gv_Buscar.DataBind();
+            }
+
+            dt = ArtistaManager.obtenerTodos();
+            gv_Buscar.DataSource = dt;
+            gv_Buscar.DataBind();
+
         }
 
         protected void btn_Modificar_Click(object sender, EventArgs e)
@@ -225,10 +326,7 @@ namespace Web.UI.admin
                 int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
                 string nombre = txt_Nombre.Text;
                 string apellido = txt_Apellido.Text;
-                DateTime fechaNac = new DateTime();
-                fechaNac.AddDays(Convert.ToInt32(txt_dia.Text));
-                fechaNac.AddMonths(Convert.ToInt32(txt_mes.Text));
-                fechaNac.AddYears(Convert.ToInt32(txt_año.Text));
+                DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
 
 
                 int sexo = ddl_Sexo.SelectedIndex;
@@ -326,7 +424,6 @@ namespace Web.UI.admin
 
             }
         }
-
 
     }
 }
