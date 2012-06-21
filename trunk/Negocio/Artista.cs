@@ -25,6 +25,15 @@ namespace Negocio
             this.pais = p;
         }
 
+        public Artista(int cod, string nom, DateTime fecNac, Sexo sx, Pais p)
+        {
+            this.codigo = cod;
+            this.nombre = nom;
+            this.fechaNacimiento = fecNac;
+            this.sexo = sx;
+            this.pais = p;
+        }
+
         public Artista(int cod, string nom, DateTime fechaN, Pais p)
         {
             this.codigo = cod;
