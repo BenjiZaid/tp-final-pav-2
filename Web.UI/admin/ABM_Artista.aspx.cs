@@ -380,17 +380,28 @@ namespace Web.UI.admin
             {
                 if (ddl_Opcion.SelectedItem.Text == "Artista")
                 {
-                    int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
-                    string nombre = txt_Nombre.Text;
-                    string apellido = txt_Apellido.Text;
-                    DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
 
+                    int cod_Artista = System.Convert.ToInt32(lbl_Nro_Codigo.Text);
+                    string nombre = txt_Nombre.Text;                    
+                    DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
                     int cod_Sexo = System.Convert.ToInt32(ddl_Sexo.SelectedValue);
                     Sexo s = SexoManager.obtenerSexo(cod_Sexo);
                     int cod_Pais = System.Convert.ToInt32(ddl_PaisOrigen.SelectedValue);
                     Pais p = PaisManager.obtenerPais(cod_Pais);
 
-                    Artista a = new Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                    Artista a = new Artista();
+
+                    if (txt_Apellido.Text == "")
+                    {
+                        a = new Artista(cod_Artista, nombre, fechaNac, s, p);
+                    }
+                    else
+                    {
+                        string apellido = txt_Apellido.Text;
+                        a = new Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                    }
+
+                    
 
                     if (ArtistaManager.guardarArtista(a) == true)
                     {

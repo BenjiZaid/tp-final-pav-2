@@ -21,6 +21,13 @@ namespace Controlador
             {
                 sql = "Insert into Artista(cod_Artista, nombre, fecha_Nacimiento, pais_Origen) values(@cod_Artista, @nombre, @fecha_Nacimiento, @pais_Origen)";
             }
+
+            if (a.Apellido == null)
+            {
+                sql = "Insert into Artista(cod_Artista, nombre, fecha_Nacimiento, pais_Origen) values(@cod_Artista, @nombre, @fecha_Nacimiento, @pais_Origen)";
+                parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
+            }
+
             else
             {
                 sql = "Insert into Artista(cod_Artista, apellido, nombre, fecha_Nacimiento, cod_Sexo, pais_Origen) values(@cod_Artista, @apellido, @nombre, @fecha_Nacimiento, @cod_Sexo, @pais_Origen)";
@@ -40,9 +47,15 @@ namespace Controlador
             String sql;
             Boolean b = false;
             List<SqlParameter> parametros = new List<SqlParameter>();
-            if (a.Apellido == "" && a.Sexo == null)
+            if (a.Apellido == null && a.Sexo == null)
             {
                 sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
+            }
+
+            if (a.Apellido==null)
+            {
+                sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
+                parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
             }
 
             else
