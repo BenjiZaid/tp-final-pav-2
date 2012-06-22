@@ -141,14 +141,16 @@
     <asp:Button ID="btn_Buscar" runat="server" Text="Buscar" 
         onclick="btn_Buscar_Click" />
     &nbsp;
-    <asp:Button ID="btn_Cancelar_Buscar" runat="server" Text="Cancelar" />
+    <asp:Button ID="btn_Cancelar_Buscar" runat="server" Text="Cancelar" 
+        onclick="btn_Cancelar_Buscar_Click" />
 </td>
 </tr>
 
 <tr>
 <td colspan="2" style="text-align:center;"><asp:GridView ID="gv_Buscar" 
         runat="server" AutoGenerateColumns="False" CellPadding="4" 
-        ForeColor="#333333" onrowcommand="gv_Buscar_RowCommand" >
+        ForeColor="#333333" onrowcommand="gv_Buscar_RowCommand" AllowPaging="True" 
+        onpageindexchanging="gv_Buscar_PageIndexChanging" >
     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
     <Columns>
         <asp:BoundField DataField="cod_Artista" HeaderText="Código" />
