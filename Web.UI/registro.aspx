@@ -189,36 +189,25 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Fecha de Nacimiento:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_FechaNac" runat="server"></asp:TextBox></td>
+    <td>
+        <asp:TextBox ID="txt_dia" runat="server" Width="25px">dd</asp:TextBox>
+        &nbsp;<asp:TextBox ID="txt_mes" runat="server" Width="25px">mm</asp:TextBox>
+        &nbsp;<asp:TextBox ID="txt_año" runat="server" Width="40px">yyyy</asp:TextBox>
+        </td>
     <td class="validador">
-        <asp:RequiredFieldValidator 
-        ID="required_FechaNac" 
-        runat="server" 
-        ErrorMessage="Debe ingresar su fecha de nacimiento."
-        ControlToValidate="txt_FechaNac"
-        Display="Dynamic">
-        </asp:RequiredFieldValidator>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" 
+            ControlToValidate="txt_dia" Display="Dynamic" 
+            ErrorMessage="Debe ingresar un dia." MaximumValue="31" MinimumValue="1" 
+            Type="Integer"></asp:RangeValidator>
+        <asp:RangeValidator ID="RangeValidator2" runat="server" 
+            ControlToValidate="txt_mes" Display="Dynamic" 
+            ErrorMessage="Debe ingresar un mes."></asp:RangeValidator>
         <br />
-        <asp:CompareValidator 
-        ID="compare_Formato_Fecha" 
-        runat="server" 
-        ErrorMessage="Formato de fecha incorrecto."
-        ControlToValidate="txt_FechaNac" 
-        Operator="DataTypeCheck"
-        Display="Dynamic">
-        </asp:CompareValidator>
-        
-        <asp:RangeValidator 
-        ID="range_Fecha" 
-        runat="server" 
-        ErrorMessage="Debe ingresar una fecha válida."
-        Type="Date"
-        MinimumValue="01/01/1900"
-        MaximumValue="31/12/2075"
-        Display="Dynamic"
-        ControlToValidate="txt_FechaNac">
-        </asp:RangeValidator>
         <asp:Label ID="lbl_FechaNac" runat="server" ForeColor="Red"></asp:Label>
+        <asp:RangeValidator ID="RangeValidator3" runat="server" 
+            ControlToValidate="txt_año" Display="Dynamic" 
+            ErrorMessage="Debe ingresar un año." MaximumValue="2012" MinimumValue="1800" 
+            Type="Integer"></asp:RangeValidator>
     </td>
     </tr>
     

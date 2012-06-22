@@ -39,7 +39,7 @@ namespace Web.UI
                 }
                 string apellido = txt_Apellido.Text;
                 string nombre = txt_Nombre.Text;
-                DateTime fechaNac = Convert.ToDateTime(txt_FechaNac.Text);
+                DateTime fechaNac = new DateTime(Convert.ToInt32(txt_año.Text), Convert.ToInt32(txt_mes.Text), Convert.ToInt32(txt_dia.Text));
                 int pais = cmb_Pais.SelectedIndex;
                 Negocio.Pais pai = Controlador.PaisManager.obtenerPais(pais);
                 int provincia = cmb_Provincia.SelectedIndex;
