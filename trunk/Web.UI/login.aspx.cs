@@ -13,5 +13,14 @@ namespace Web.UI
         {
 
         }
+
+        protected void LoginButton_Click1(object sender, EventArgs e)
+        {
+            if (Login_User.UserName.ToString().Equals("admin") && Login_User.Password.ToString().Equals("admin"))
+            {
+                Response.Redirect("/admin/Opciones.aspx");                
+            }
+            
+        }
     }
 }

@@ -323,39 +323,6 @@ namespace Web.UI.admin
         protected void btn_Buscar_Click(object sender, EventArgs e)
         {
             cargarGrilla();
-            //DataTable dt = new DataTable();
-
-
-            //if (txt_Buscar_Nombre.Text != "" && ddl_Buscar_Pais.SelectedItem.Text != "--Seleccione una opcion--")
-            //{
-            //    dt = ArtistaManager.obtenerArtistasPorNombreYPais(txt_Buscar_Nombre.Text, ddl_Buscar_Pais.SelectedIndex+1);
-            //    gv_Buscar.DataSource = dt;
-            //    gv_Buscar.DataBind();
-            //}
-
-            //if (txt_Buscar_Nombre.Text != "")
-            //{
-            //    dt = ArtistaManager.obtenerArtistasPorNombre(txt_Buscar_Nombre.Text);
-            //    gv_Buscar.DataSource = dt;
-            //    gv_Buscar.DataBind();
-            //}
-
-
-
-            //if (ddl_Buscar_Pais.SelectedItem.Text != "--Seleccione una opcion--")
-            //{
-            //    dt = ArtistaManager.obtenerArtistasPorPais(ddl_Buscar_Pais.SelectedIndex+1);
-            //    gv_Buscar.DataSource = dt;
-            //    gv_Buscar.DataBind();
-            //}
-
-            //if (txt_Buscar_Nombre.Text == "" && ddl_Buscar_Pais.SelectedItem.Text == "--Seleccione una opcion--")
-            //{
-            //    dt = ArtistaManager.obtenerTodos();
-            //    gv_Buscar.DataSource = dt;
-            //    gv_Buscar.DataBind();
-            //}
-
         }
 
         protected void cargarGrilla()

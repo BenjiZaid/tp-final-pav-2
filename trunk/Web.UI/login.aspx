@@ -59,7 +59,8 @@
                                 <asp:Button ID="LoginButton" runat="server" BackColor="#FFFBFF" 
                                     BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" 
                                     Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" 
-                                    Text="Inicio de sesión" ValidationGroup="Login_User" />
+                                    Text="Inicio de sesión" ValidationGroup="Login_User" 
+                                    onclick="LoginButton_Click1" />
                             </td>
                         </tr>
                     </table>
