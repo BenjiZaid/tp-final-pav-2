@@ -137,12 +137,11 @@
 </tr>
 
 <tr>
-<td style="text-align:center;" colspan="2">
-    <asp:Button ID="btn_Buscar" runat="server" Text="Buscar" 
-        onclick="btn_Buscar_Click" />
-    &nbsp;
-    <asp:Button ID="btn_Cancelar_Buscar" runat="server" Text="Cancelar" 
-        onclick="btn_Cancelar_Buscar_Click" />
+<td style="text-align:left;" colspan="2">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btn_Buscar" runat="server" onclick="btn_Buscar_Click" 
+        Text="Buscar" />
+&nbsp;
 </td>
 </tr>
 
