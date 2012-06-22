@@ -71,8 +71,40 @@ namespace Web.UI.admin
                             Artista a;
                             a = ArtistaManager.obtenerArtistaPorCodigo(Convert.ToInt32(lbl_Nro_Codigo.Text));
 
-                            if (a.Apellido != null) ddl_Opcion.SelectedIndex = 1;
-                            else {ddl_Opcion.SelectedIndex = 2;}
+                            if (a.Sexo != null)
+                            { ddl_Opcion.SelectedIndex = 1;
+                            ddl_Sexo.Visible = true;
+                            txt_Apellido.Visible = true;
+                            lbl_Apellido.Visible = true;
+                            lbl_Sexo.Visible = true;
+                            lbl_Nombre.Visible = true;
+                            txt_Nombre.Visible = true;
+                            lbl_FechaNac.Visible = true;
+                            txt_dia.Visible = true;
+                            txt_mes.Visible = true;
+                            txt_año.Visible = true;
+                            lbl_dia.Visible = true;
+                            lbl_mes.Visible = true;
+                            lbl_año.Visible = true;
+                            ddl_PaisOrigen.Visible = true;
+                            lbl_PaisOrigen.Visible = true;
+                           
+                            }
+                            else 
+                            { 
+                                ddl_Opcion.SelectedIndex = 2;
+                                lbl_Nombre.Visible = true;
+                                txt_Nombre.Visible = true;
+                                lbl_FechaNac.Visible = true;
+                                txt_dia.Visible = true;
+                                txt_mes.Visible = true;
+                                txt_año.Visible = true;
+                                lbl_dia.Visible = true;
+                                lbl_mes.Visible = true;
+                                lbl_año.Visible = true;
+                                ddl_PaisOrigen.Visible = true;
+                                lbl_PaisOrigen.Visible = true;
+                            }
                             txt_Nombre.Enabled = true;
                             txt_Nombre.Text = a.Nombre;                                                      
 
