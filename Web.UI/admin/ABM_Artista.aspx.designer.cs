@@ -373,15 +373,6 @@ namespace Web.UI.admin {
         protected global::System.Web.UI.WebControls.Button btn_Buscar;
         
         /// <summary>
-        /// Control btn_Cancelar_Buscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Cancelar_Buscar;
-        
-        /// <summary>
         /// Control gv_Buscar.
         /// </summary>
         /// <remarks>
