@@ -44,21 +44,21 @@ namespace Controlador
 
         public static Boolean modificarArtista(Negocio.Artista a)
         {
-            String sql;
+            String sql="...";
             Boolean b = false;
             List<SqlParameter> parametros = new List<SqlParameter>();
-            if (a.Apellido == null || a.Apellido=="" && a.Sexo == null)
+            if (a.Sexo == null)
             {
                 sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
             }
 
-            if (a.Apellido==null || a.Apellido=="")
+            if (a.Apellido=="" && a.Sexo != null)
             {
                 sql = "Update Artista set nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
                 parametros.Add(new SqlParameter("@cod_Sexo", a.Sexo.Codigo));
             }
 
-            else
+            if (a.Apellido != "" && a.Sexo != null)
             {
                 sql = "Update Artista set apellido = @apellido, nombre = @nombre, fecha_Nacimiento = @fecha_Nacimiento, cod_Sexo = @cod_Sexo, pais_Origen = @pais_Origen where cod_Artista = @cod_Artista";
                 parametros.Add(new SqlParameter("@apellido", a.Apellido));
@@ -95,7 +95,35 @@ namespace Controlador
             if (dt.Rows.Count > 0)
             {
 
-                if (dt.Rows[0]["apellido"] != null)
+                try
+                {
+                    int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
+                    Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
+
+                    try
+                    {
+                        String apellido = (String)dt.Rows[0]["apellido"];
+                        int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                        String nombre = (String)dt.Rows[0]["nombre"];
+                        DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                        int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                        Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                        a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                    }
+                    catch (Exception)
+                    {                        
+                        int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                        String nombre = (String)dt.Rows[0]["nombre"];
+                        DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                        int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                        Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                        a = new Negocio.Artista(cod_Artista, nombre, fechaNac, s, p);                        
+                    }
+                    
+                   
+                    
+                }
+                catch (Exception)
                 {
                     int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
                     String nombre = (String)dt.Rows[0]["nombre"];
@@ -104,20 +132,30 @@ namespace Controlador
                     Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
                     a = new Negocio.Artista(cod_Artista, nombre, fechaNac, p);
                 }
-                else 
-                {
+
+                //if (dt.Rows[0]["cod_Sexo"] == null || dt.Rows[0]["cod_Sexo"] == "")
+                //{
+                //    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                //    String nombre = (String)dt.Rows[0]["nombre"];
+                //    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                //    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                //    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                //    a = new Negocio.Artista(cod_Artista, nombre, fechaNac, p);
+                //}
+                //else 
+                //{
                     
 
-                    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
-                    String nombre = (String)dt.Rows[0]["nombre"];
-                    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
-                    String apellido = (String)dt.Rows[0]["apellido"];
-                    int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
-                    Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
-                    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
-                    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
-                    a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
-                }
+                //    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
+                //    String nombre = (String)dt.Rows[0]["nombre"];
+                //    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
+                //    String apellido = (String)dt.Rows[0]["apellido"];
+                //    int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
+                //    Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
+                //    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
+                //    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
+                //    a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
+                //}
                 
 
                 
