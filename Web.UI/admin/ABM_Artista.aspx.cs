@@ -182,18 +182,19 @@ namespace Web.UI.admin
         {
             switch (e.CommandName)
             {
-                case "Select":
-
+                    case "Select":
                     int index = System.Convert.ToInt32(e.CommandArgument);
                     GridViewRow row = gv_Buscar.Rows[index];
                     string codigo = row.Cells[0].Text;
 
                     Response.Redirect("ABM_Artista.aspx?accion=modificar&codigo=" + codigo);
                     break;
-                    case "Eliminar":
-                    //Eliminar pidiendo confirmacion, ojo con los cd's del artista
-                    // si tiene alguno tendria que eliminarse tambien
-                    //Volver a cargar la grilla
+
+                    case "Eliminar":                    
+                    break;
+
+                    case "Agregar CD":
+                    Response.Redirect("ABM_CD.aspx");
                     break;
             }
         }

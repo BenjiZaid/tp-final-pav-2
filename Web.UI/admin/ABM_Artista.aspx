@@ -122,13 +122,13 @@
 <td rowspan="2" align="right">
     <br />
 </td>
-<td align="left">
+<td align="left" style="width: 395px">
     <asp:Label ID="Label5" runat="server" Height="20px" Text="Nombre "></asp:Label>
     &nbsp;&nbsp; <asp:TextBox ID="txt_Buscar_Nombre" runat="server"></asp:TextBox></td>
 </tr>
 
 <tr>
-<td style="height: 2px" align="left">
+<td style="height: 2px; width: 395px;" align="left">
     <asp:Label ID="Label6" runat="server" Height="20px" Text="País"></asp:Label>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <asp:DropDownList ID="ddl_Buscar_Pais" runat="server">
