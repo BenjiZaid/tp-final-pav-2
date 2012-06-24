@@ -2,12 +2,12 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" runat="server">
 <h3><asp:Label ID="lbl_Accion" runat="server"></asp:Label></h3>
-    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="324px">
+    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="413px">
     
-    <table style="height: 18px; width: 300px">
+    <table style="height: 18px; width: 400px">
     <tr>
         <td align="right" height="25">Artista:</td>    
-        <td>
+        <td style="width: 171px">
             <asp:Label ID="lbl_Codigo" runat="server"></asp:Label>
             &nbsp;-&nbsp;<asp:Label ID="lbl_Artista" runat="server"></asp:Label>
             &nbsp;</td> 
@@ -15,84 +15,100 @@
 
     <tr>
         <td align="right">Nombre del CD:</td>
-        <td><asp:TextBox ID="txt_NombreCD" runat="server"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_NombreCD" runat="server"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RequiredFieldValidator 
         ID="required_Nombre" 
         runat="server" 
         ErrorMessage="Debe ingresar el nombre del CD."
-        ControlToValidate="txt_NombreCD">
+        ControlToValidate="txt_NombreCD"
+        Display="None">
         </asp:RequiredFieldValidator>
     </tr>
 
      <tr>
         <td align="right">Genero:</td>
-        <td><asp:DropDownList ID="ddl_Genero" runat="server"></asp:DropDownList></td>
+        <td style="width: 171px"><asp:DropDownList ID="ddl_Genero" runat="server"></asp:DropDownList></td>
         <td class="validador"></td>
     </tr>
 
     <tr>
         <td align="right">Año:</td>
-        <td><asp:TextBox ID="txt_AñoEdicion" runat="server" Width="40px"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_AñoEdicion" runat="server" Width="40px"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RangeValidator ID="RangeValidator" runat="server" 
         ControlToValidate="txt_añoEdicion" ErrorMessage="Ingrese un año válido" 
         ForeColor="Red" MinimumValue="1900" Type="Integer" Display="None">
         </asp:RangeValidator>
+        <asp:RequiredFieldValidator 
+        ID="RequiredFieldValidator2" 
+        runat="server" 
+        ErrorMessage="Ingrese un año."
+        ControlToValidate="txt_añoEdicion" Display="None">
+        </asp:RequiredFieldValidator>
     </tr>
 
     <tr>
         <td align="right">Discografica:</td>
-        <td><asp:TextBox ID="txt_Discografica" runat="server"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_Discografica" runat="server"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RequiredFieldValidator 
         ID="RequiredFieldValidator1" 
         runat="server" 
         ErrorMessage="Debe ingresar la firma discografica del CD."
-        ControlToValidate="txt_Discografica">
+        ControlToValidate="txt_Discografica" Display="None">
         </asp:RequiredFieldValidator>
+    </tr>
+    <tr>
+        <td align="right">Agregar Temas:</td>
+    </tr>
+    <tr>
+        <td align="right">Numero de pista:</td>
+        <td style="width: 171px">
+            <asp:Label ID="lbl_Pista" runat="server"></asp:Label>
+            </td>
+        <td class="validador"></td>
+
     </tr>
 
     <tr>
-        <td align="right">Nº de Temas:</td>
-        <td><asp:TextBox ID="txt_Temas" runat="server" Width="25px"></asp:TextBox>&nbsp;&nbsp;
-            <asp:Button ID="btn_AgregarTemas" runat="server" 
-                onclick="btn_AgregarTemas_Click" Text="Agregar Temas" />
-        </td>
+        <td align="right">Nombre:</td>
+        <td style="width: 171px"><asp:TextBox ID="txt_NombrePista" runat="server"></asp:TextBox></td>
         <td class="validador"></td>
-        <asp:RequiredFieldValidator 
-        ID="RequiredFieldValidator2" 
-        runat="server" 
-        ErrorMessage="Debe ingresar la cantidad de temas del CD."
-        ControlToValidate="txt_Discografica">
-        </asp:RequiredFieldValidator>
     </tr>
-
+        <tr>
+        <td align="right">Duración:</td>
+        <td style="width: 171px"><asp:TextBox ID="txt_Minutos" runat="server" Width="30px"></asp:TextBox>&nbsp;<asp:Label 
+                ID="Label7" runat="server" Height="20px" Text="Min."></asp:Label>
+            &nbsp;
+            <asp:TextBox ID="txt_Segundos" runat="server" Width="30px"></asp:TextBox>
+            <asp:Label ID="Label8" runat="server" Height="20px" Text="Seg."></asp:Label>
+            </td>
+        <td class="validador"></td>
+        <asp:RangeValidator ID="RangeValidator1" runat="server" 
+        ControlToValidate="txt_Minutos" ErrorMessage="Ingrese un valor entre 0 y 60" 
+        ForeColor="Red" MinimumValue="0" MaximumValue="60" Type="Integer" Display="None">
+        </asp:RangeValidator>
+        <asp:RangeValidator ID="RangeValidator2" runat="server" 
+        ControlToValidate="txt_Segundos" ErrorMessage="Ingrese un valor entre 0 y 60" 
+        ForeColor="Red" MinimumValue="0" MaximumValue="60" Type="Integer" Display="None">
+        </asp:RangeValidator>
+    </tr>
      <tr>
-                    <td colspan="2" style="text-align:left;">
-                        <br />
-                        <asp:GridView ID="gv_Temas" runat="server" 
-                            AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333">
-                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                            <Columns>
-                                <asp:CommandField HeaderText="Numero" NewText="" ShowEditButton="True" 
-                                    EditText="" />
-                                <asp:CommandField EditText="" HeaderText="Nombre" ShowEditButton="True" />
-                                <asp:CommandField EditText="" HeaderText="Duración" ShowEditButton="True" />
-                            </Columns>
-                            <EditRowStyle BackColor="#999999" />
-                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-                        </asp:GridView>
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                    <td>
                     </td>
+                    <td style="width: 171px">
+                        <asp:Button ID="btn_AgregarTema" runat="server" Text="Agregar" 
+                            onclick="btn_AgregarTema_Click1" />
+                    </td>
+                    <td>
+                    </td>
+                    <tr>
+                        <td colspan="2" style="text-align:left;">
+                            <br />
+                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                        </td>
+                    </tr>
                 </tr>
 
     </table>
