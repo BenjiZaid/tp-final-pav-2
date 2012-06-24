@@ -11,7 +11,7 @@ namespace Web.UI.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            RangeValidator.MaximumValue = DateTime.Today.ToString("yyyy");
         }
     }
 }

@@ -206,7 +206,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
         <asp:Label ID="lbl_FechaNac" runat="server" ForeColor="Red"></asp:Label>
         <asp:RangeValidator ID="RangeValidator3" runat="server" 
             ControlToValidate="txt_año" Display="Dynamic" 
-            ErrorMessage="Debe ingresar un año." MaximumValue="2012" MinimumValue="1800" 
+            ErrorMessage="Debe ingresar un año." MinimumValue="1800" 
             Type="Integer"></asp:RangeValidator>
     </td>
     </tr>

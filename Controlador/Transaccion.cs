@@ -140,7 +140,7 @@ namespace DAO
             try
             {
                 //CD
-                string sql = "Insert into CD(cod_CD, nombre, cod_Genero, cod_Artista, año_Edicion) values(@cod_CD, @nombre, @cod_Genero, @cod_Artista, @año_Edicion)";
+                string sql = "Insert into CD(cod_CD, nombre, cod_Genero, cod_Artista, año_Edicion, discografia) values(@cod_CD, @nombre, @cod_Genero, @cod_Artista, @año_Edicion, @discografia)";
                 trans = cn.BeginTransaction();
 
                 SqlCommand cm = new SqlCommand(sql, cn, trans);
@@ -150,6 +150,7 @@ namespace DAO
                 parametros.Add(new SqlParameter("@cod_Genero", cd.Genero.Codigo));
                 parametros.Add(new SqlParameter("@cod_Artista", cd.Artista.Codigo));
                 parametros.Add(new SqlParameter("@año_Edicion", cd.AñoEdicion));
+                parametros.Add(new SqlParameter("@discografica", cd.Discografica));
                 foreach (SqlParameter item in parametros)
                 {
                     cm.Parameters.Add(item);

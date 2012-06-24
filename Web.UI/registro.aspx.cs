@@ -16,6 +16,7 @@ namespace Web.UI
         {
             if (!Page.IsPostBack)
             {
+                RangeValidator3.MaximumValue = DateTime.Today.ToString("yyyy");
                 cargarCombos();
             }
         }
