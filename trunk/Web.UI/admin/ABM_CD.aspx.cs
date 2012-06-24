@@ -26,24 +26,10 @@ namespace Web.UI.admin
            
         }
 
-        protected void btn_AgregarTemas_Click(object sender, EventArgs e)
+        protected void btn_AgregarTema_Click(object sender, EventArgs e)
         {
-            if (!txt_Temas.Text.Equals(""))
-            {
-                DataTable dt = new DataTable();
-                dt.Columns.Add("numero");
-                dt.Columns.Add("nombre");
-                dt.Columns.Add("duracion");
-                DataRow dr;
-                for (int i = 0; i < Convert.ToInt32(txt_Temas.Text); i++)
-                {
-                    dr = dt.NewRow();
-                    dr[0] = i;
-                    dt.Rows.Add(dr);
-                }
-                gv_Temas.DataSource = dt;
-                gv_Temas.DataBind();
-            }
+
+          
         }
 
         protected void cargarCombo(DropDownList ddl) 
@@ -150,10 +136,15 @@ namespace Web.UI.admin
                     }
                     lbl_Accion.Text = "Agregar CD";
                     cargarCombo(ddl_Genero);
-                    gv_Temas.Visible = true;
                     break;
             }
         }
+
+        protected void btn_AgregarTema_Click1(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }
