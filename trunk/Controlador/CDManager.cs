@@ -25,13 +25,14 @@ namespace Controlador
         {
             String sql;
             Boolean b = false;
-            sql = "Update CD set nombre = @nombre, cod_Genero = @cod_Genero, cod_Artista = @cod_Artista, año_Edicion = @año_Edicion where cod_CD = @cod_CD ";
+            sql = "Update CD set nombre = @nombre, cod_Genero = @cod_Genero, cod_Artista = @cod_Artista, año_Edicion = @año_Edicion, discografica = @discografica where cod_CD = @cod_CD ";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@cod_CD", c.Codigo));
             parametros.Add(new SqlParameter("@nombre", c.Nombre));
             parametros.Add(new SqlParameter("@cod_Genero", c.Genero.Codigo));
             parametros.Add(new SqlParameter("@cod_Artista", c.Artista.Codigo));
             parametros.Add(new SqlParameter("@año_Edicion", c.AñoEdicion));
+            parametros.Add(new SqlParameter("@discografica", c.Discografica));
 
             b = DAO.AccesoDatos.ejecutar(sql, parametros);
             if (b)
@@ -73,8 +74,9 @@ namespace Controlador
                 int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
                 Negocio.Artista a = (Negocio.Artista)ArtistaManager.obtenerArtistaPorCodigo(cod_Artista);
                 int año_Edicion = (int)dt.Rows[0]["año_Edicion"];
+                string discografica = (string)dt.Rows[0]["discografica"];
                 List<Negocio.Tema> temas = TemaManager.obtenerTemas(codigoCD);
-                Negocio.CD cd = new Negocio.CD(cod_CD, nombre, temas, g, a, año_Edicion);
+                Negocio.CD cd = new Negocio.CD(cod_CD, nombre, temas, g, a, año_Edicion, discografica);
                 return cd;
             }
             else

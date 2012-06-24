@@ -35,7 +35,7 @@ namespace Web.UI.admin
                 ddl_PaisOrigen.Visible = false;
                 lbl_PaisOrigen.Visible = false;
                 btn_Agregar.Visible = false;
-
+                RangeValidator3.MaximumValue = DateTime.Today.ToString("yyyy");
 
 
                 if (Request.QueryString["accion"] != null)
