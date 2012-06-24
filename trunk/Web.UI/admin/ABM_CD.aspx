@@ -2,11 +2,11 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" runat="server">
 <h3><asp:Label ID="lbl_Accion" runat="server"></asp:Label></h3>
-    <asp:Panel ID="Panel1" runat="server" Height="324px">
+    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="324px">
     
     <table style="height: 18px; width: 300px">
     <tr>
-        <td align="right">Artista:</td>    
+        <td align="right" height="25">Artista:</td>    
         <td>
             <asp:Label ID="lbl_Codigo" runat="server"></asp:Label>
             &nbsp;-&nbsp;<asp:Label ID="lbl_Artista" runat="server"></asp:Label>
@@ -36,7 +36,7 @@
         <td><asp:TextBox ID="txt_AñoEdicion" runat="server" Width="40px"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RangeValidator ID="RangeValidator" runat="server" 
-        ControlToValidate="txt_año" ErrorMessage="Ingrese un año válido" 
+        ControlToValidate="txt_añoEdicion" ErrorMessage="Ingrese un año válido" 
         ForeColor="Red" MinimumValue="1900" Type="Integer" Display="None">
         </asp:RangeValidator>
     </tr>
@@ -53,14 +53,26 @@
         </asp:RequiredFieldValidator>
     </tr>
 
+    <tr>
+        <td align="right">Nº de Temas:</td>
+        <td><asp:TextBox ID="txt_Temas" runat="server" Width="25px"></asp:TextBox>&nbsp;&nbsp;
+            <asp:Button ID="btn_AgregarTemas" runat="server" 
+                onclick="btn_AgregarTemas_Click" Text="Agregar Temas" />
+        </td>
+        <td class="validador"></td>
+        <asp:RequiredFieldValidator 
+        ID="RequiredFieldValidator2" 
+        runat="server" 
+        ErrorMessage="Debe ingresar la cantidad de temas del CD."
+        ControlToValidate="txt_Discografica">
+        </asp:RequiredFieldValidator>
+    </tr>
+
      <tr>
                     <td colspan="2" style="text-align:left;">
                         <br />
-                        <asp:GridView ID="GridView1" runat="server" 
-                            AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" 
-                            onpageindexchanging="gv_Buscar_PageIndexChanging" 
-                            onrowcommand="gv_Buscar_RowCommand" 
-                            onselectedindexchanged="gv_Buscar_SelectedIndexChanged">
+                        <asp:GridView ID="gv_Temas" runat="server" 
+                            AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
                                 <asp:CommandField HeaderText="Numero" NewText="" ShowEditButton="True" 
@@ -79,6 +91,7 @@
                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                         </asp:GridView>
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                     </td>
                 </tr>
 
@@ -89,7 +102,6 @@
     <asp:Panel ID="pnl_BuscarArt" runat="server" Height="594px">
         <asp:Panel ID="pnl_Buscar" runat="server" HorizontalAlign="Left" 
             Visible="false">
-            <asp:Label ID="Label7" runat="server" Text="Buscar Artista"></asp:Label>
             <br />
             <table>
                 <tr>
@@ -113,8 +125,8 @@
                 <tr>
                     <td colspan="2" style="text-align:left;">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btn_Buscar" runat="server" onclick="btn_Buscar_Click" 
-                            Text="Buscar" />
+                        <asp:Button ID="btn_Buscar" runat="server" 
+                            Text="Buscar" onclick="btn_Buscar_Click" />
                         &nbsp;
                     </td>
                 </tr>
@@ -123,8 +135,7 @@
                         <asp:GridView ID="gv_Buscar" runat="server" AllowPaging="True" 
                             AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" 
                             onpageindexchanging="gv_Buscar_PageIndexChanging" 
-                            onrowcommand="gv_Buscar_RowCommand" 
-                            onselectedindexchanged="gv_Buscar_SelectedIndexChanged">
+                            onrowcommand="gv_Buscar_RowCommand">
                             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                             <Columns>
                                 <asp:BoundField DataField="cod_Artista" HeaderText="Código" />
