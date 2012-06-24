@@ -41,6 +41,8 @@ namespace Web.UI.admin
                     dr[0] = i;
                     dt.Rows.Add(dr);
                 }
+                gv_Temas.DataSource = dt;
+                gv_Temas.DataBind();
             }
         }
 
@@ -57,17 +59,20 @@ namespace Web.UI.admin
                 ddl.DataTextField = "descripcion";
                 ddl.DataValueField = "cod_Pais";
                 ddl.DataBind();
+                ddl.Items.Add(new ListItem("--Seleccione una opcion--", Convert.ToString(0)));
                 ddl.SelectedValue = "--Seleccione una opcion--";
             }
 
             if (ddl.ID.Equals("ddl_Genero"))
             {
-                ddl.Items.Add(new ListItem("--Seleccione una opcion--", Convert.ToString(0)));
+                
                 dt = GeneroManager.obtenerTodos();
                 ddl.DataSource = dt;
                 ddl.DataTextField = "nombre";
                 ddl.DataValueField = "cod_Genero";
                 ddl.DataBind();
+                ddl.Items.Add(new ListItem("--Seleccione una opcion--", Convert.ToString(0)));
+                //ddl.SelectedValue = "--Seleccione una opcion--";
             }
             
         }
@@ -145,6 +150,7 @@ namespace Web.UI.admin
                     }
                     lbl_Accion.Text = "Agregar CD";
                     cargarCombo(ddl_Genero);
+                    gv_Temas.Visible = true;
                     break;
             }
         }
