@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" runat="server">
 <h3><asp:Label ID="lbl_Accion" runat="server"></asp:Label></h3>
-    <asp:Panel ID="Panel1" runat="server" Height="569px">
+    <asp:Panel ID="Panel1" runat="server" Height="324px">
     
     <table style="height: 18px; width: 300px">
     <tr>
