@@ -142,9 +142,68 @@ namespace Web.UI.admin
 
         protected void btn_AgregarTema_Click1(object sender, EventArgs e)
         {
+            string nombre = txt_NombrePista.Text;
+            string duracion = txt_Minutos.Text+":"+txt_Segundos.Text;
+            string numero = Convert.ToString(gv_Temas.Rows.Count + 1);
+            
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Numero");
+            dt.Columns.Add("Nombre");
+            dt.Columns.Add("Duracion");
 
+            if (gv_Temas.Rows.Count == 0)
+            {
+                
+                gv_Temas.DataSource = agregarFila(dt, numero, nombre, duracion);
+                gv_Temas.DataBind();
+                clearTema();
+            }
+            else
+            {
+                for (int i = 0; i < gv_Temas.Rows.Count; i++)
+                {
+                    string nom = gv_Temas.Rows[i].Cells[1].Text;
+                    string num = gv_Temas.Rows[i].Cells[0].Text;
+                    string dur = gv_Temas.Rows[i].Cells[2].Text;
+                    dt=agregarFila(dt, num, nom, dur);
+                }
+                dt = agregarFila(dt, numero, nombre, duracion);
+                gv_Temas.DataSource = dt;
+                gv_Temas.DataBind();
+                clearTema();
+            }
+            lbl_Pista.Text = Convert.ToString(gv_Temas.Rows.Count + 1);
         }
 
+
+        protected DataTable agregarFila(DataTable dt, string numero, string nombre, string duracion) 
+        {
+            DataRow dr = dt.NewRow();
+            
+            dr[0] = numero;
+            dr[1] = nombre;
+            dr[2] = duracion;
+            dt.Rows.Add(dr);
+            return dt;
+        }
+
+        protected void clearTema() 
+        {
+            txt_NombrePista.Text = "";
+            txt_Segundos.Text = "";
+            txt_Minutos.Text = "";
+        }
+
+        protected void gv_Temas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            switch (e.CommandName)
+            {
+                case "Select":
+                    int index = System.Convert.ToInt32(e.CommandArgument);
+
+                    break;
+            }
+        }
 
     }
 }

@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" runat="server">
 <h3><asp:Label ID="lbl_Accion" runat="server"></asp:Label></h3>
-    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="413px">
+    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="638px">
     
     <table style="height: 18px; width: 400px">
     <tr>
@@ -65,7 +65,7 @@
     <tr>
         <td align="right">Numero de pista:</td>
         <td style="width: 171px">
-            <asp:Label ID="lbl_Pista" runat="server"></asp:Label>
+            <asp:Label ID="lbl_Pista" runat="server">1</asp:Label>
             </td>
         <td class="validador"></td>
 
@@ -94,22 +94,56 @@
         ForeColor="Red" MinimumValue="0" MaximumValue="60" Type="Integer" Display="None">
         </asp:RangeValidator>
     </tr>
-     <tr>
+
+         <tr>
                     <td>
                     </td>
                     <td style="width: 171px">
-                        <asp:Button ID="btn_AgregarTema" runat="server" Text="Agregar" 
+                        <asp:Button ID="Button1" runat="server" Text="Agregar" 
                             onclick="btn_AgregarTema_Click1" />
                     </td>
                     <td>
                     </td>
                     <tr>
                         <td colspan="2" style="text-align:left;">
+                            <asp:GridView ID="gv_Temas" runat="server" AutoGenerateColumns="False" 
+                                CellPadding="4" ForeColor="#333333" onrowcommand="gv_Temas_RowCommand">
+                                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                                <Columns>
+                                    <asp:BoundField DataField="Numero" HeaderText="Número" />
+                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                                    <asp:BoundField DataField="Duracion" HeaderText="Duracion" />
+                                    <asp:CommandField AccessibleHeaderText="Eliminar" ButtonType="Button" 
+                                        SelectText="Eliminar" ShowSelectButton="True" />
+                                </Columns>
+                                <EditRowStyle BackColor="#999999" />
+                                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                            </asp:GridView>
                             <br />
-                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
                         </td>
                     </tr>
-                </tr>
+     </tr>
+
+
+     <tr>
+                    
+                    <td colspan="2" style="text-align:left;">
+                        <br />
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+                    </td>
+     </tr>
+
+
+        </tr>
+
 
     </table>
 
