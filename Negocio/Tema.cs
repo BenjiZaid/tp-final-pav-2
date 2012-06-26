@@ -9,11 +9,11 @@ namespace Negocio
     {
         private int codigoCD, numeroPista;
         private string nombre;
-        private DateTime duracion;
+        private string duracion;
 
         public Tema() { }
 
-        public Tema(int ccd, int np, string nom, DateTime dur)
+        public Tema(int ccd, int np, string nom, string dur)
         {
             codigoCD = ccd;
             numeroPista = np;
@@ -39,7 +39,7 @@ namespace Negocio
             set { nombre = value; }
         }
 
-        public DateTime Duracion
+        public string Duracion
         {
             get { return duracion; }
             set { duracion = value; }

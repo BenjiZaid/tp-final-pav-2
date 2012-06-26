@@ -86,5 +86,11 @@ namespace Controlador
 
 
         }
+
+        public static int obtenerUltimo() 
+        {
+            string sql = "Select max(cod_CD) from CD";
+            return DAO.AccesoDatos.ultimoId(sql);
+        }
     }
 }

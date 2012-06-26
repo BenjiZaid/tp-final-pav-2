@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Controlador;
+using DAO;
 
 namespace Web.UI.admin
 {
@@ -56,6 +57,18 @@ namespace Web.UI.admin
                 ddl.DataSource = dt;
                 ddl.DataTextField = "nombre";
                 ddl.DataValueField = "cod_Genero";
+                ddl.DataBind();
+                ddl.Items.Add(new ListItem("--Seleccione una opcion--", Convert.ToString(0)));
+                //ddl.SelectedValue = "--Seleccione una opcion--";
+            }
+
+            if (ddl.ID.Equals("ddl_Proveedor"))
+            {
+
+                dt = ProveedorManager.obtenerTodos();
+                ddl.DataSource = dt;
+                ddl.DataTextField = "nombre";
+                ddl.DataValueField = "cod_Proveedor";
                 ddl.DataBind();
                 ddl.Items.Add(new ListItem("--Seleccione una opcion--", Convert.ToString(0)));
                 //ddl.SelectedValue = "--Seleccione una opcion--";
@@ -136,6 +149,8 @@ namespace Web.UI.admin
                     }
                     lbl_Accion.Text = "Agregar CD";
                     cargarCombo(ddl_Genero);
+                    cargarCombo(ddl_Proveedor);
+                    
                     break;
             }
         }
@@ -200,9 +215,94 @@ namespace Web.UI.admin
             {
                 case "Select":
                     int index = System.Convert.ToInt32(e.CommandArgument);
+                    DataTable dt = new DataTable();
+                    DataRow dr;
+                    dt.Columns.Add("Numero");
+                    dt.Columns.Add("Nombre");
+                    dt.Columns.Add("Duracion");
+                    if (gv_Temas.Rows.Count  != 1)
+                    {
+                        for (int i = 0; i < gv_Temas.Rows.Count; i++)
+                        {
+                            dr = dt.NewRow();
+                            if (i != gv_Temas.SelectedIndex)
+                            {
+                                string nombre = gv_Temas.Rows[i].Cells[1].Text;
+                                int numero = Convert.ToInt32(gv_Temas.Rows[i].Cells[0].Text);
+                                string duracion = gv_Temas.Rows[i].Cells[2].Text;
+                                if (gv_Temas.SelectedIndex < i)
+	                            {
+                                    dr[0] = numero - 1;
+                                    dr[1] = nombre;
+                                    dr[2] = duracion;
+                                    dt.Rows.Add(dr);
+	                            }
+                                else
+                                {
+                                    dr[0] = numero;
+                                    dr[1] = nombre;
+                                    dr[2] = duracion;
+                                    dt.Rows.Add(dr);
+                                }
 
+                            }
+
+                            
+                            
+                        }
+                    }
+                    gv_Temas.DataSource = dt;
+                    gv_Temas.DataBind();
+                    lbl_Pista.Text = Convert.ToString(gv_Temas.Rows.Count + 1);
                     break;
             }
+        }
+
+        protected void btn_Comprar_Click(object sender, EventArgs e)
+        {
+            List<Negocio.Tema> temas = new List<Negocio.Tema>();
+            List<Negocio.Ejemplar> ejemplares = new List<Negocio.Ejemplar>();
+            int codCD = CDManager.obtenerUltimo() + 1;
+
+            for (int i = 0; i < gv_Temas.Rows.Count; i++)
+			{
+			    int nro = Convert.ToInt32(gv_Temas.Rows[i].Cells[0].Text);
+                string nom = gv_Temas.Rows[i].Cells[1].Text;
+                string dur = gv_Temas.Rows[i].Cells[2].Text;
+                Negocio.Tema tema = new Negocio.Tema(codCD, nro, nom, dur);
+                temas.Add(tema);
+			}
+
+            
+            string nombre = txt_NombreCD.Text;
+            int codGenero = ddl_Genero.SelectedIndex+1;
+            Negocio.Genero genero = GeneroManager.obtenerGenero(codGenero);
+            int codArtista = Convert.ToInt32(lbl_Codigo.Text);
+            Negocio.Artista artista = ArtistaManager.obtenerArtistaPorCodigo(codArtista);
+            int año = Convert.ToInt32(txt_AñoEdicion.Text);
+            string discografica = txt_Discografica.Text;
+
+            Negocio.CD cd = new Negocio.CD(codCD, nombre, temas, genero, artista, año, discografica);
+
+            for (int i = 0; i < Convert.ToInt32(txt_ejemplares.Text); i++)
+			{
+			    int nroEjemplar = i+1;
+                double precioCompra = Convert.ToDouble(txt_precioCompra.Text);
+                double precioVenta = Convert.ToDouble(txt_precioVenta.Text);
+                Negocio.Ejemplar ejemplar = new Negocio.Ejemplar(nroEjemplar, codCD, precioVenta, precioCompra);
+                ejemplares.Add(ejemplar);
+			}
+
+            
+            if (DAO.Transaccion.comprarCD(cd, ejemplares))
+            {
+                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+            }
+            else
+            {
+                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+            }
+
         }
 
     }

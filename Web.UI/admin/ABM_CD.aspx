@@ -2,7 +2,7 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" runat="server">
 <h3><asp:Label ID="lbl_Accion" runat="server"></asp:Label></h3>
-    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="638px">
+    <asp:Panel ID="pnl_AgregarCD" runat="server" Height="725px">
     
     <table style="height: 18px; width: 400px">
     <tr>
@@ -105,7 +105,7 @@
                     <td>
                     </td>
                     <tr>
-                        <td colspan="2" style="text-align:left;">
+                        <td colspan="2" style="text-align:center;">
                             <asp:GridView ID="gv_Temas" runat="server" AutoGenerateColumns="False" 
                                 CellPadding="4" ForeColor="#333333" onrowcommand="gv_Temas_RowCommand">
                                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -127,11 +127,49 @@
                                 <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                             </asp:GridView>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <br />
                         </td>
                     </tr>
      </tr>
 
+     <tr>
+        <td align="right">Proveedor:</td>
+        <td style="width: 171px"><asp:DropDownList ID="ddl_Proveedor" runat="server" ></asp:DropDownList></td>
+        <td class="validador"></td>
+
+    </tr>
+
+         <tr>
+        <td align="right">N° de ejemplares a comprar:</td>
+        <td style="width: 171px"><asp:TextBox ID="txt_ejemplares" runat="server" Width="40px"></asp:TextBox>
+             </td>
+        <td class="validador"></td>
+
+    </tr>
+    <tr>
+        <td align="right">Precio de compra: $</td>
+        <td style="width: 171px"><asp:TextBox ID="txt_precioCompra" runat="server" Width="40px"></asp:TextBox>
+             </td>
+        <td class="validador"></td>
+
+    </tr>
+    <tr>
+        <td align="right">Precio de venta: $</td>
+        <td style="width: 171px"><asp:TextBox ID="txt_precioVenta" runat="server" Width="40px"></asp:TextBox>
+             </td>
+        <td class="validador"></td>
+
+    </tr>
+
+        <tr>
+        <td></td>
+        <td style="width: 171px"><asp:Button ID="btn_Comprar" runat="server" Height="25px" Text="Comprar" 
+                BackColor="#33CC33" onclick="btn_Comprar_Click"></asp:Button>
+             </td>
+        <td class="validador"></td>
+
+    </tr>
 
      <tr>
                     
@@ -142,14 +180,16 @@
      </tr>
 
 
-        </tr>
+    </tr>
+
+
 
 
     </table>
 
     </asp:Panel>
 <asp:Panel ID="pnl_Datos" runat="server" Visible="false">
-    <asp:Panel ID="pnl_BuscarArt" runat="server" Height="594px">
+    <asp:Panel ID="pnl_BuscarArt" runat="server" Height="535px">
         <asp:Panel ID="pnl_Buscar" runat="server" HorizontalAlign="Left" 
             Visible="false">
             <br />
@@ -205,12 +245,21 @@
                             <SortedDescendingCellStyle BackColor="#FFFDF8" />
                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                         </asp:GridView>
+                        <asp:Panel ID="Panel1" runat="server">
+                        </asp:Panel>
                     </td>
                 </tr>
             </table>
         </asp:Panel>
     </asp:Panel>
 
+</asp:Panel>
+<asp:Panel ID ="pnl_Informacion" HorizontalAlign="Center" runat="server" Visible="false">
+<asp:Label ID = "lbl_Mensaje" ForeColor="Green" runat="server" Font-Size="Medium"></asp:Label>
+</asp:Panel>
+
+<asp:Panel ID="pnl_Volver" runat="server" HorizontalAlign="Center">
+<a href="Opciones.aspx">Volver a Opciones</a>
 </asp:Panel>
 
 </asp:Content>
