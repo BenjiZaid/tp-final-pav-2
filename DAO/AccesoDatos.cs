@@ -128,6 +128,24 @@ namespace DAO
             return id;
         }
 
+        public static Boolean ejecutarEscalar(String sql)
+        {
+
+            Boolean h = false;
+            SqlConnection cn = conexion();
+            try
+            {
+                SqlCommand cm = new SqlCommand(sql, cn);
+                h = Convert.ToBoolean(cm.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                cn.Close();
+                Console.WriteLine(e.Message);
+            }
+            return h;
+        }
+
 
     }
 }

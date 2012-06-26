@@ -260,48 +260,52 @@ namespace Web.UI.admin
 
         protected void btn_Comprar_Click(object sender, EventArgs e)
         {
-            List<Negocio.Tema> temas = new List<Negocio.Tema>();
-            List<Negocio.Ejemplar> ejemplares = new List<Negocio.Ejemplar>();
-            int codCD = CDManager.obtenerUltimo() + 1;
-
-            for (int i = 0; i < gv_Temas.Rows.Count; i++)
-			{
-			    int nro = Convert.ToInt32(gv_Temas.Rows[i].Cells[0].Text);
-                string nom = gv_Temas.Rows[i].Cells[1].Text;
-                string dur = gv_Temas.Rows[i].Cells[2].Text;
-                Negocio.Tema tema = new Negocio.Tema(codCD, nro, nom, dur);
-                temas.Add(tema);
-			}
-
-            
-            string nombre = txt_NombreCD.Text;
-            int codGenero = ddl_Genero.SelectedIndex+1;
-            Negocio.Genero genero = GeneroManager.obtenerGenero(codGenero);
-            int codArtista = Convert.ToInt32(lbl_Codigo.Text);
-            Negocio.Artista artista = ArtistaManager.obtenerArtistaPorCodigo(codArtista);
-            int año = Convert.ToInt32(txt_AñoEdicion.Text);
-            string discografica = txt_Discografica.Text;
-
-            Negocio.CD cd = new Negocio.CD(codCD, nombre, temas, genero, artista, año, discografica);
-
-            for (int i = 0; i < Convert.ToInt32(txt_ejemplares.Text); i++)
-			{
-			    int nroEjemplar = i+1;
-                double precioCompra = Convert.ToDouble(txt_precioCompra.Text);
-                double precioVenta = Convert.ToDouble(txt_precioVenta.Text);
-                Negocio.Ejemplar ejemplar = new Negocio.Ejemplar(nroEjemplar, codCD, precioVenta, precioCompra);
-                ejemplares.Add(ejemplar);
-			}
-
-            
-            if (DAO.Transaccion.comprarCD(cd, ejemplares))
+            if (Page.IsValid)
             {
-                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                List<Negocio.Tema> temas = new List<Negocio.Tema>();
+                List<Negocio.Ejemplar> ejemplares = new List<Negocio.Ejemplar>();
+                int codCD = CDManager.obtenerUltimo() + 1;
+
+                for (int i = 0; i < gv_Temas.Rows.Count; i++)
+                {
+                    int nro = Convert.ToInt32(gv_Temas.Rows[i].Cells[0].Text);
+                    string nom = gv_Temas.Rows[i].Cells[1].Text;
+                    string dur = gv_Temas.Rows[i].Cells[2].Text;
+                    Negocio.Tema tema = new Negocio.Tema(codCD, nro, nom, dur);
+                    temas.Add(tema);
+                }
+
+
+                string nombre = txt_NombreCD.Text;
+                int codGenero = ddl_Genero.SelectedIndex + 1;
+                Negocio.Genero genero = GeneroManager.obtenerGenero(codGenero);
+                int codArtista = Convert.ToInt32(lbl_Codigo.Text);
+                Negocio.Artista artista = ArtistaManager.obtenerArtistaPorCodigo(codArtista);
+                int año = Convert.ToInt32(txt_AñoEdicion.Text);
+                string discografica = txt_Discografica.Text;
+
+                Negocio.CD cd = new Negocio.CD(codCD, nombre, temas, genero, artista, año, discografica);
+
+                for (int i = 0; i < Convert.ToInt32(txt_ejemplares.Text); i++)
+                {
+                    int nroEjemplar = i + 1;
+                    double precioCompra = Convert.ToDouble(txt_precioCompra.Text);
+                    double precioVenta = Convert.ToDouble(txt_precioVenta.Text);
+                    Negocio.Ejemplar ejemplar = new Negocio.Ejemplar(nroEjemplar, codCD, precioVenta, precioCompra);
+                    ejemplares.Add(ejemplar);
+                }
+
+
+                if (DAO.Transaccion.comprarCD(cd, ejemplares))
+                {
+                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                }
+                else
+                {
+                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                } 
             }
-            else
-            {
-                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
-            }
+            
 
         }
 
