@@ -52,6 +52,8 @@
   <ItemGroup>
     <Content Include="admin\ABM_Artista.aspx" />
     <Content Include="admin\ABM_CD.aspx" />
+    <Content Include="admin\ABM_Proveedor.aspx" />
+    <Content Include="admin\CargasSimples.aspx" />
     <Content Include="admin\Login.aspx" />
     <Content Include="admin\Opciones.aspx" />
     <Content Include="estilo\principal.css" />
@@ -92,6 +94,20 @@
     </Compile>
     <Compile Include="admin\ABM_CD.aspx.designer.cs">
       <DependentUpon>ABM_CD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\ABM_Proveedor.aspx.cs">
+      <DependentUpon>ABM_Proveedor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\ABM_Proveedor.aspx.designer.cs">
+      <DependentUpon>ABM_Proveedor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\CargasSimples.aspx.cs">
+      <DependentUpon>CargasSimples.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\CargasSimples.aspx.designer.cs">
+      <DependentUpon>CargasSimples.aspx</DependentUpon>
     </Compile>
     <Compile Include="admin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

@@ -24,6 +24,7 @@ namespace Negocio
             this.telefonoContacto = telefonoContacto;
         }
 
+
         public int Codigo
         {
             get { return codigo; }
