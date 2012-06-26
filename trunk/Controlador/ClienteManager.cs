@@ -71,7 +71,7 @@ namespace Controlador
         public static Boolean eliminarCliente(string username)
         {
             Boolean b;
-            String sql = "Delete from CD where username = @username";
+            String sql = "Delete from Cliente where username = @username";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@username", username));
             b = DAO.AccesoDatos.ejecutar(sql, parametros);

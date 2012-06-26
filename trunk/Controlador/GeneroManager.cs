@@ -49,7 +49,7 @@ namespace Controlador
         public static Negocio.Genero obtenerGenero(int codigo)
         {
             DataTable dt;
-            String sql = "Select * From Genero where cod_Genero = @codigo";
+            String sql = "Select * From Genero where cod_Genero = @cod_Genero";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@cod_Genero", codigo));
             dt = DAO.AccesoDatos.consultar(sql, parametros);

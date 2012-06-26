@@ -140,7 +140,7 @@ namespace DAO
             try
             {
                 //CD
-                string sql = "Insert into CD(cod_CD, nombre, cod_Genero, cod_Artista, año_Edicion, discografia) values(@cod_CD, @nombre, @cod_Genero, @cod_Artista, @año_Edicion, @discografia)";
+                string sql = "Insert into CD(cod_CD, nombre, cod_Genero, cod_Artista, año_Edicion, discografica) values(@cod_CD, @nombre, @cod_Genero, @cod_Artista, @año_Edicion, @discografica)";
                 trans = cn.BeginTransaction();
 
                 SqlCommand cm = new SqlCommand(sql, cn, trans);
@@ -158,12 +158,14 @@ namespace DAO
                 cm.ExecuteNonQuery();
 
                 //Temas
-                string sql2 = "Insert into CD(cod_CD, nroPista, nombre, duracion) values(@cod_CD, @nroPista, @nombre, @duracion)";
-                List<SqlParameter> par = new List<SqlParameter>();
+                string sql2 = "Insert into Tema(cod_CD, nroPista, nombre, duracion) values(@cod_CD, @nroPista, @nombre, @duracion)";
+                
                 List<Negocio.Tema> l = cd.Temas;
-                SqlCommand cm2 = new SqlCommand(sql2, cn, trans);
-                foreach (Negocio.Tema item in l)
+                
+                foreach (Negocio.Tema item in cd.Temas)
                 {
+                    SqlCommand cm2 = new SqlCommand(sql2, cn, trans);
+                    List<SqlParameter> par = new List<SqlParameter>();
                     par.Add(new SqlParameter("@cod_CD", cd.Codigo));
                     par.Add(new SqlParameter("@nroPista", item.NumeroPista));
                     par.Add(new SqlParameter("@nombre", item.Nombre));
@@ -179,10 +181,11 @@ namespace DAO
 
                 //Ejemplares
                 string sql3 = "Insert into Ejemplar(nro_Ejemplar, cod_CD, precioVenta, precioCompra, enStock) values(@nro_Ejemplar, @cod_CD, @precioVenta, @precioCompra, @enStock)";
-                List<SqlParameter> p = new List<SqlParameter>();
-                SqlCommand cm3 = new SqlCommand(sql3, cn, trans);
+                
                 foreach (Negocio.Ejemplar item in ej)
                 {
+                    List<SqlParameter> p = new List<SqlParameter>();
+                    SqlCommand cm3 = new SqlCommand(sql3, cn, trans);
                     p.Add(new SqlParameter("@nro_Ejemplar", item.NroEjemplar));
                     p.Add(new SqlParameter("@cod_CD", item.CodCD));
                     p.Add(new SqlParameter("@precioVenta", item.PrecioVenta));

@@ -15,7 +15,11 @@ namespace Controlador
         {
             String sql;
             Boolean b = false;
-            int id = DAO.AccesoDatos.ultimoId("Ejemplar") + 1;
+            sql = "Select max(cod_CD) from Ejemplar where cod_CD = @cod_CD";
+            List<SqlParameter> p = new List<SqlParameter>();
+            p.Add(new SqlParameter("@cod_CD", e.CodCD));
+            int id = DAO.AccesoDatos.ultimoId(sql,p) + 1;
+
             sql = "Insert into Ejemplar(nro_Ejemplar, cod_CD, precioVenta, precioCompra, enStock) values(@nro_Ejemplar, @cod_CD, @precioVenta, @precioCompra, @enStock)";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nro_Ejemplar", id));
@@ -106,6 +110,15 @@ namespace Controlador
                 return null;
             }
 
+        }
+
+        public static int obtenerUltimo(int codCD)
+        {
+            string sql = "Select max(nro_Ejemplar) from Ejemplar where cod_CD = @codCD";
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@codCD", codCD));
+            return DAO.AccesoDatos.ultimoId(sql, parametros);
+            
         }
     }
 }

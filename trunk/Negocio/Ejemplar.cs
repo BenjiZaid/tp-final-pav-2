@@ -8,10 +8,10 @@ namespace Negocio
     public class Ejemplar
     {
         private int nroEjemplar, codCD;
-        private float precioVenta, precioCompra;
+        private double precioVenta, precioCompra;
         private Boolean enStock;
 
-        public Ejemplar(int ne, int cd, float pv, float pc)
+        public Ejemplar(int ne, int cd, double pv, double pc)
         {
             nroEjemplar = ne;
             codCD = cd;
@@ -32,22 +32,30 @@ namespace Negocio
             set { codCD = value; }
         }
 
-        public float PrecioVenta
+        public double PrecioVenta
         {
             get { return precioVenta; }
             set { precioVenta = value; }
         }
 
-        public float PrecioCompra
+        public double PrecioCompra
         {
             get { return precioCompra; }
             set { precioCompra = value; }
         }
 
-        public Boolean EnStock
+        public int EnStock
         {
-            get { return enStock; }
-            set { enStock = value; }
+            get
+            {
+                if (enStock == true) return 1;
+                else return 0;
+            }
+            set
+            {
+                if (value == 1) enStock = true;
+                else enStock = false;
+            }
         }
     }
 }

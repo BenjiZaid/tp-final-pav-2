@@ -14,7 +14,6 @@ namespace Controlador
         {
             String sql;
             Boolean b = false;
-            //int id = DAO.AccesoDatos.ultimoId("Artista") + 1;
             
             List<SqlParameter> parametros = new List<SqlParameter>();
             if (a.Apellido == null || a.Apellido=="" && a.Sexo == null)
@@ -133,32 +132,7 @@ namespace Controlador
                     a = new Negocio.Artista(cod_Artista, nombre, fechaNac, p);
                 }
 
-                //if (dt.Rows[0]["cod_Sexo"] == null || dt.Rows[0]["cod_Sexo"] == "")
-                //{
-                //    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
-                //    String nombre = (String)dt.Rows[0]["nombre"];
-                //    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
-                //    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
-                //    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
-                //    a = new Negocio.Artista(cod_Artista, nombre, fechaNac, p);
-                //}
-                //else 
-                //{
-                    
-
-                //    int cod_Artista = (int)dt.Rows[0]["cod_Artista"];
-                //    String nombre = (String)dt.Rows[0]["nombre"];
-                //    DateTime fechaNac = (DateTime)dt.Rows[0]["fecha_Nacimiento"];
-                //    String apellido = (String)dt.Rows[0]["apellido"];
-                //    int cod_Sexo = (int)dt.Rows[0]["cod_Sexo"];
-                //    Negocio.Sexo s = (Negocio.Sexo)SexoManager.obtenerSexo(cod_Sexo);
-                //    int pais_Origen = (int)dt.Rows[0]["pais_Origen"];
-                //    Negocio.Pais p = (Negocio.Pais)PaisManager.obtenerPais(pais_Origen);
-                //    a = new Negocio.Artista(cod_Artista, nombre, apellido, fechaNac, s, p);
-                //}
-                
-
-                
+               
                 return a;
             }
             else
@@ -215,13 +189,6 @@ namespace Controlador
             dt = DAO.AccesoDatos.consultar(sql, parametros);
                 return dt;
         }
-        //public static DataTable obtenerArtistasPorNombre(string nombre)
-        //{
-        //    DataTable dt = new DataTable();
-        //    String sql = "Select * From Artista WHERE nombre LIKE '" + nombre + "'";
-        //    dt = DAO.AccesoDatos.consultar(sql);
-        //    return dt;
-        //}
 
         public static DataTable obtenerArtistasPorPais(int pais)
         {

@@ -55,7 +55,7 @@ namespace Controlador
         public static Negocio.Tema obtenerTema(string nombre)
         {
             DataTable dt;
-            String sql = "Select * From Tema where nombre like '%@nombre%'";
+            string sql = "Select * From Tema where nombre like '%'+@nombre+'%'";
             List<SqlParameter> parametros = new List<SqlParameter>();
             parametros.Add(new SqlParameter("@nombre", nombre));
             dt = DAO.AccesoDatos.consultar(sql, parametros);
@@ -63,8 +63,8 @@ namespace Controlador
             {
                 int cod_CD = (int)dt.Rows[0]["cod_CD"];
                 int nroPista = (int)dt.Rows[0]["nroPista"];
-                String nom = (String)dt.Rows[0]["nombre"];
-                DateTime duracion = (DateTime)dt.Rows[0]["duracion"];
+                string nom = (string)dt.Rows[0]["nombre"];
+                string duracion = (string)dt.Rows[0]["duracion"];
 
                 Negocio.Tema cd = new Negocio.Tema(cod_CD, nroPista, nombre, duracion);
                 return cd;
@@ -91,8 +91,8 @@ namespace Controlador
                 {
                     int cod_CD = (int)dt.Rows[0]["cod_CD"];
                     int nroPista = (int)dt.Rows[0]["nroPista"];
-                    String nom = (String)dt.Rows[0]["nombre"];
-                    DateTime duracion = (DateTime)dt.Rows[0]["duracion"];
+                    string nom = (String)dt.Rows[0]["nombre"];
+                    string duracion = (string)dt.Rows[0]["duracion"];
                     lista.Add(new Negocio.Tema(cod_CD, nroPista, nom, duracion));
                 }
 
