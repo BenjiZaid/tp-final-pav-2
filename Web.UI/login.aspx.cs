@@ -5,34 +5,40 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Controlador;
+using System.Drawing;
 
 namespace Web.UI
 {
-    public partial class login : System.Web.UI.Page
+    public partial class login1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                
-            }
+
         }
 
-        protected void LoginButton_Click1(object sender, EventArgs e)
+        protected void btn_Ingresar_Click(object sender, EventArgs e)
         {
-            if (Seguridad.obtenerRoles(Login_User.UserName.ToString()).Equals("admin"))
+            if (Seguridad.validarUsuario(txt_usuario.Text, txt_contraseña.Text))
             {
-                Response.Redirect("/admin/Opciones.aspx");                
-            }
-            if (Seguridad.obtenerRoles(Login_User.UserName.ToString()).Equals("user"))
-            {
-                Response.Redirect("OpcionesUsuario.aspx");
+                string rol = Seguridad.obtenerRoles(txt_usuario.Text);
+                if (rol.Equals("admin"))
+                {
+                    Session["rol"] = rol;
+                    Response.Redirect("admin/Opciones.aspx");
+                }
+                if (rol.Equals("user"))
+                {
+                    Session["rol"] = rol;
+                    Response.Redirect("OpcionesUsuario.aspx");
+                }
+                
             }
             else
             {
-                Response.Redirect("login.aspx");
+                lbl_error.Text = "Verifique su nombre de usuario y contraseña por favor.";
+                lbl_error.ForeColor = Color.Red;
+                txt_contraseña.Text = "";
             }
-            
         }
     }
 }
