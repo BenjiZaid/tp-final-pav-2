@@ -63,6 +63,10 @@ namespace Web.UI
                     txt_Username.Text = "";
                     txt_Username.Focus();
                 }
+                else
+                {
+                    Controlador.ClienteManager.agregarRol(cliente);
+                }
             }
         }
 

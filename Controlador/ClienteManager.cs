@@ -133,6 +133,15 @@ namespace Controlador
 
 
         }
+
+        public static bool agregarRol(Negocio.Cliente c)
+        {
+            string sql = "insert into UsuarioXRol (usuario, rol) values(@usuario, @rol)";
+            List<SqlParameter> param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@usuario", c.Usuario));
+            param.Add(new SqlParameter("@rol", 2));
+            return DAO.AccesoDatos.ejecutar(sql, param);
+        }
     }
 }
 
