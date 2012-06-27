@@ -25,7 +25,7 @@ namespace Web.UI
         void Application_Error(object sender, EventArgs e)
         {
             // Código que se ejecuta al producirse un error no controlado
-
+            
         }
 
         void Session_Start(object sender, EventArgs e)
