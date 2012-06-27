@@ -68,6 +68,7 @@
     <Content Include="imagenes\top.jpg" />
     <Content Include="index.aspx" />
     <Content Include="login.aspx" />
+    <Content Include="OpcionesUsuario.aspx" />
     <Content Include="registro.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="OpcionesUsuario.aspx.cs">
+      <DependentUpon>OpcionesUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OpcionesUsuario.aspx.designer.cs">
+      <DependentUpon>OpcionesUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="registro.aspx.cs">

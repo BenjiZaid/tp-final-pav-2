@@ -2,6 +2,9 @@
 
 <asp:Content ContentPlaceHolderID="content_modficar" ID="content_Login" runat="server">
 
+    <asp:Panel ID="Panel1" runat="server">
+    </asp:Panel>
+
 <asp:Login ID="Login_User" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" 
         BorderPadding="4" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" 
         Font-Size="0.8em" ForeColor="#333333">
@@ -52,6 +55,7 @@
                         <tr>
                             <td align="center" colspan="2" style="color:Red;">
                                 <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                <br />
                             </td>
                         </tr>
                         <tr>
@@ -60,7 +64,7 @@
                                     BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" CommandName="Login" 
                                     Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" 
                                     Text="Inicio de sesión" ValidationGroup="Login_User" 
-                                    onclick="LoginButton_Click1" />
+                                    onclick="LoginButton_Click1" PostBackUrl="~/login.aspx" />
                             </td>
                         </tr>
                     </table>
@@ -72,5 +76,6 @@
     <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" 
         ForeColor="White" />
 </asp:Login>
+
 
 </asp:Content>
