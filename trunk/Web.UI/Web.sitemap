@@ -5,7 +5,5 @@
     <siteMapNode title="Gestion de Clientes"  description="Seleccione la gestion que desea realizar">
       <siteMapNode url="registro.aspx" title="Nuevo Usuario"  description="Registro de nuevo usuario" />
     </siteMapNode>
-    <siteMapNode title="Administracion" description="Gestiones administrativas" url="/admin/Login.aspx" >
-    </siteMapNode>
   </siteMapNode>
 </siteMap>

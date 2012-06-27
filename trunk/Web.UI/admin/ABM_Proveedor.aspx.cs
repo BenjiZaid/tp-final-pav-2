@@ -165,13 +165,16 @@ namespace Web.UI.admin
 
         protected void btn_Deshabilitar_Click(object sender, EventArgs e)
         {
-            if (ProveedorManager.deshabilitarProveedor(ddl_Proveedor.SelectedIndex+1))
+            if (ddl_Proveedor.SelectedValue != "0")
             {
-                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
-            }
-            else
-            {
-                Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                if (ProveedorManager.deshabilitarProveedor(ddl_Proveedor.SelectedIndex + 1))
+                {
+                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=exito");
+                }
+                else
+                {
+                    Response.Redirect("ABM_Artista.aspx?accion=informar&mensaje=fracaso");
+                }
             }
         }
     }

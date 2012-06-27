@@ -65,7 +65,7 @@ namespace Web.UI.admin
             if (ddl.ID.Equals("ddl_Proveedor"))
             {
 
-                dt = ProveedorManager.obtenerTodos();
+                dt = ProveedorManager.obtenerTodosHabilitados();
                 ddl.DataSource = dt;
                 ddl.DataTextField = "nombre";
                 ddl.DataValueField = "cod_Proveedor";

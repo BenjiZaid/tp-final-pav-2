@@ -137,5 +137,13 @@ namespace Controlador
             dt = DAO.AccesoDatos.consultar(sql);
             return dt;
         }
+
+        public static DataTable obtenerTodosHabilitados()
+        {
+            DataTable dt = new DataTable();
+            String sql = "Select * From Proveedor where esHabilitado = 1";
+            dt = DAO.AccesoDatos.consultar(sql);
+            return dt;
+        }
     }
 }
