@@ -21,7 +21,7 @@
     <tr>
     <td align="right">Nombre del Proveedor:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Proveedor" runat="server" MaxLength="10"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Proveedor" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="RequiredFieldValidator1" 
@@ -37,7 +37,7 @@
     <tr>
     <td align="right">Domicilio:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Domicilio" runat="server" ></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Domicilio" runat="server" MaxLength="50" ></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator
          ID="required_Domicilio" 
@@ -52,7 +52,7 @@
     <tr>
     <td align="right">Telefono:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Telefono" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Telefono" runat="server" MaxLength="15"></asp:TextBox></td>
     <td class="validador"></td>
     <asp:RequiredFieldValidator
          ID="RequiredFieldValidator2" 
@@ -72,7 +72,7 @@
         <tr>
     <td align="right">Email:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Email" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Email" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RegularExpressionValidator 
         ID="regex_Email" 
@@ -87,7 +87,7 @@
     <tr>
     <td align="right">Nombre de contacto:</td>
     <td class="asterisco">&nbsp;</td>
-    <td><asp:TextBox ID="txt_contactoNombre" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_contactoNombre" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RegularExpressionValidator
         ID="regex_Apellido" 
@@ -102,7 +102,7 @@
     <tr>
     <td align="right">Telefono de contacto:</td>
     <td class="asterisco"></td>
-    <td><asp:TextBox ID="txt_contactoTelefono" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_contactoTelefono" runat="server" MaxLength="15"></asp:TextBox></td>
     <td class="validador">&nbsp;</td>
     <asp:RegularExpressionValidator
          ID="RegularExpressionValidator1" 

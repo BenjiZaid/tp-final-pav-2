@@ -213,5 +213,64 @@ namespace Controlador
             string consulta = "Select MAX(cod_Artista) as Codigo From Artista";
             return DAO.AccesoDatos.ultimoId(consulta);
         }
+
+        public static DataTable obtenerArtistasPorNombres(string nom)
+        {
+            DataTable dt;
+            String sql = "Select a.nombre as Nombre, a.apellido as Apellido, a.fecha_Nacimiento as 'Fecha de Nacimiento', p.descripcion as Nacionaliad";  
+            sql += " From Artista a join Pais p on a.pais_Origen = p.cod_Pais"; 
+            sql += " where nombre like '%'+@nombre+'%' or apellido like '%'+@nombre+'%'";
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@nombre", nom));
+            dt = DAO.AccesoDatos.consultar(sql, parametros);
+            return dt;
+        }
+
+        public static DataTable obtenerArtistasPorCaracter(string nom)
+        {
+            DataTable dt;
+            String sql;
+            if (nom.Equals("N"))
+            {
+                sql = "Select a.nombre as Nombre, a.apellido as Apellido, a.fecha_Nacimiento as 'Fecha de Nacimiento', p.descripcion as Nacionaliad";
+                sql += " From Artista a join Pais p on a.pais_Origen = p.cod_Pais";
+                sql += " where nombre like @nombre+'%' or apellido like @nombre+'%' and nombre like 'Ñ%' or apellido like 'Ñ%' order by a.nombre asc";
+            }
+            if (nom.Equals("#"))
+            {
+                sql = "Select a.nombre as Nombre, a.apellido as Apellido, a.fecha_Nacimiento as 'Fecha de Nacimiento', p.descripcion as Nacionaliad";
+                sql += " From Artista a join Pais p on a.pais_Origen = p.cod_Pais";
+                sql += " where nombre like '0%' and nombre like '1%' and nombre like '2%' and nombre like '3%' and nombre like '4%' and nombre like '5%' and nombre like '6%' and nombre like '7%' and nombre like '8%' and nombre like '9%' order by a.nombre asc";
+            }
+            else
+            {
+                sql = "Select a.nombre as Nombre, a.apellido as Apellido, a.fecha_Nacimiento as 'Fecha de Nacimiento', p.descripcion as Nacionaliad";
+                sql += " From Artista a join Pais p on a.pais_Origen = p.cod_Pais";
+                sql += " where nombre like @nombre+'%' or apellido like @nombre+'%' order by a.nombre asc";
+            }
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@nombre", nom));
+            dt = DAO.AccesoDatos.consultar(sql, parametros);
+            return dt;
+        }
+
+        public static string obtenerID(string nombre)
+        {
+            string sql = "Select cod_Artista from Artista where nombre = @nombre";
+            List<SqlParameter> param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@nombre", nombre));
+            string id =DAO.AccesoDatos.ejecutarEscalarString(sql, param);
+            return id;
+        }
+
+        public static string obtenerID(string nombre, string apellido)
+        {
+            string sql = "Select cod_Artista from Artista where nombre = @nombre and apellido = @apellido";
+            List<SqlParameter> param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@nombre", nombre));
+            param.Add(new SqlParameter("@apellido", apellido));
+            string id = DAO.AccesoDatos.ejecutarEscalarString(sql, param);
+            return id;
+        }
     }
 }

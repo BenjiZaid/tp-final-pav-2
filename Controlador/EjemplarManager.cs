@@ -46,6 +46,18 @@ namespace Controlador
             return b;
         }
 
+        public static Boolean outStock(int ejemplar, int album)
+        {
+            String sql;
+            Boolean b = false;
+            sql = "Update Ejemplar set enStock = 0 where nro_Ejemplar = @nro_Ejemplar and cod_CD = @cod_CD";
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@nro_Ejemplar", ejemplar));
+            parametros.Add(new SqlParameter("@cod_CD", album));
+            b = DAO.AccesoDatos.ejecutar(sql, parametros);
+            return b;
+        }
+
         public static Boolean eliminarEjemplar(int codigo)
         {
             Boolean b;
@@ -80,6 +92,8 @@ namespace Controlador
             }
 
         }
+
+
 
         public static List<Negocio.Ejemplar> obtenerEjemplaresEnStock(int codCD)
         {
@@ -120,6 +134,43 @@ namespace Controlador
             return DAO.AccesoDatos.ultimoId(sql, parametros);
             
         }
+
+        public static int enStock(int codCD) 
+        {
+            string sql = "Select nro_Ejemplar from Ejemplar where cod_CD = @cod_CD and enStock = 1";
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@cod_CD", codCD));
+            return DAO.AccesoDatos.consultar(sql, list).Rows.Count;
+        }
+
+        public static string obtenerPrecio(int codCD)
+        {
+            string sql = "Select min(precioVenta) from Ejemplar where cod_CD = @cod_CD and enStock = 1";
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@cod_CD", codCD));
+            return DAO.AccesoDatos.ejecutarEscalarString(sql, list);
+        }
+
+        public static string obtenerPrecio(int codCD, int nroEjemplar)
+        {
+            string sql = "Select precioVenta from Ejemplar where cod_CD = @cod_CD and nro_Ejemplar = @nroEjemplar";
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@cod_CD", codCD));
+            list.Add(new SqlParameter("@nroEjemplar", nroEjemplar));
+            return DAO.AccesoDatos.ejecutarEscalarString(sql, list);
+        }
+
+        public static DataTable obtenerEjemplar(int codCD)
+        {
+            string sql = "Select nro_Ejemplar from Ejemplar where cod_CD = @cod_CD and enStock = 1 and  precioVenta =( select min(precioVenta) from Ejemplar where cod_CD = @cod_CD and enStock = 1)";
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@cod_CD", codCD));
+            return DAO.AccesoDatos.consultar(sql, list);
+
+        }
+
+
+
     }
 }
 

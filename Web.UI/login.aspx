@@ -12,6 +12,7 @@
         </td>
         <caption>
             <br />
+            <asp:Label ID="Label1" runat="server" Text="Iniciar Sesión"></asp:Label>
         </caption>
     </tr>
         <tr>

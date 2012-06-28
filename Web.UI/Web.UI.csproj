@@ -67,6 +67,7 @@
     <Content Include="imagenes\img_header.jpg" />
     <Content Include="imagenes\top.jpg" />
     <Content Include="index.aspx" />
+    <Content Include="Informacion.aspx" />
     <Content Include="login.aspx" />
     <Content Include="OpcionesUsuario.aspx" />
     <Content Include="registro.aspx" />
@@ -133,6 +134,13 @@
     </Compile>
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Informacion.aspx.cs">
+      <DependentUpon>Informacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Informacion.aspx.designer.cs">
+      <DependentUpon>Informacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

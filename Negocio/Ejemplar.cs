@@ -20,6 +20,13 @@ namespace Negocio
             enStock = true;
         }
 
+        public Ejemplar(int ne, int cd, double pv)
+        {
+            nroEjemplar = ne;
+            codCD = cd;
+            precioVenta = pv;
+        }
+
         public int NroEjemplar
         {
             get { return nroEjemplar; }

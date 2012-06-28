@@ -13,7 +13,11 @@ namespace Web.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.QueryString["accion"] == "cerrar")
+            {
+                Session["rol"] = "";
+                Session["user"] = "";
+            }
         }
 
         protected void btn_Ingresar_Click(object sender, EventArgs e)
@@ -29,6 +33,7 @@ namespace Web.UI
                 if (rol.Equals("user"))
                 {
                     Session["rol"] = rol;
+                    Session["user"] = txt_usuario.Text;
                     Response.Redirect("OpcionesUsuario.aspx");
                 }
                 

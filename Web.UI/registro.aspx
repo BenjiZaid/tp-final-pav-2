@@ -39,7 +39,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Nombre de Usuario:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Username" runat="server" MaxLength="10"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Username" runat="server" MaxLength="15"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="RequiredFieldValidator1" 
@@ -87,15 +87,6 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
          ValidationExpression="[0-9]{7,8}"
          ControlToValidate="txt_Documento">
         </asp:RegularExpressionValidator> 
-        
-        <asp:CustomValidator 
-        runat="server"
-        ID="custom_Documento" 
-        ErrorMessage="Campo vacio"
-        ClientValidationFunction="validar" 
-        ControlToValidate="txt_Documento"  
-        Display="Dynamic">
-        </asp:CustomValidator>
          <asp:Label ID="lbl_Documento" runat="server" ForeColor="Red"></asp:Label>
     </td>
     </tr>
@@ -103,7 +94,8 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Contraseña:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Password" runat="server" TextMode="Password"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Password" runat="server" TextMode="Password" 
+            MaxLength="15"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="required_Password" 
@@ -119,7 +111,8 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Confirmar contraseña:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Pass_Confirm" runat="server" TextMode="Password"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Pass_Confirm" runat="server" TextMode="Password" 
+            MaxLength="15"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="required_Pass_Confirm" 
@@ -143,7 +136,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Apellido:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Apellido" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Apellido" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="required_Apellido" 
@@ -166,7 +159,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Nombre:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Nombre" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Nombre" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="required_Nombre" 
@@ -191,17 +184,36 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <td class="asterisco">*</td>
     <td>
         <asp:TextBox ID="txt_dia" runat="server" Width="25px">dd</asp:TextBox>
-        &nbsp;<asp:TextBox ID="txt_mes" runat="server" Width="25px">mm</asp:TextBox>
-        &nbsp;<asp:TextBox ID="txt_año" runat="server" Width="40px">yyyy</asp:TextBox>
+        &nbsp;<asp:TextBox ID="txt_mes" runat="server" Width="25px" MaxLength="2">mm</asp:TextBox>
+        &nbsp;<asp:TextBox ID="txt_año" runat="server" Width="40px" MaxLength="4">yyyy</asp:TextBox>
         </td>
     <td class="validador">
+    <asp:RequiredFieldValidator 
+        ID="RequiredFieldValidator2" 
+        runat="server" 
+        ErrorMessage="Debe ingresar un dia."
+        ControlToValidate="txt_dia">
+        </asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator 
+        ID="RequiredFieldValidator3" 
+        runat="server" 
+        ErrorMessage="Debe ingresar un mes."
+        ControlToValidate="txt_mes">
+        </asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator 
+        ID="RequiredFieldValidator4" 
+        runat="server" 
+        ErrorMessage="Debe ingresar un año."
+        ControlToValidate="txt_año">
+        </asp:RequiredFieldValidator>
         <asp:RangeValidator ID="RangeValidator1" runat="server" 
             ControlToValidate="txt_dia" Display="Dynamic" 
             ErrorMessage="Debe ingresar un dia." MaximumValue="31" MinimumValue="1" 
             Type="Integer"></asp:RangeValidator>
         <asp:RangeValidator ID="RangeValidator2" runat="server" 
             ControlToValidate="txt_mes" Display="Dynamic" 
-            ErrorMessage="Debe ingresar un mes."></asp:RangeValidator>
+            ErrorMessage="Debe ingresar un mes." MaximumValue="31" MinimumValue="0" 
+            Type="Integer"></asp:RangeValidator>
         <br />
         <asp:Label ID="lbl_FechaNac" runat="server" ForeColor="Red"></asp:Label>
         <asp:RangeValidator ID="RangeValidator3" runat="server" 
@@ -282,7 +294,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Domicilio:</td>
     <td class="asterisco">*</td>
-    <td><asp:TextBox ID="txt_Domicilio" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Domicilio" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RequiredFieldValidator 
         ID="required_Domicilio" 
@@ -321,7 +333,7 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Email:</td>
     <td class="asterisco"></td>
-    <td><asp:TextBox ID="txt_Email" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Email" runat="server" MaxLength="50"></asp:TextBox></td>
     <td class="validador">
         <asp:RegularExpressionValidator 
         ID="regex_Email" 
@@ -337,14 +349,14 @@ Crea tu cuenta diligenciando todos los campos mandatorios del formulario a conti
     <tr>
     <td align="right">Telefono:</td>
     <td class="asterisco"></td>
-    <td><asp:TextBox ID="txt_Telefono" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Telefono" runat="server" MaxLength="20"></asp:TextBox></td>
     <td class="validador"></td>
     </tr>
     
     <tr>
     <td align="right">Celular:</td>
     <td class="asterisco"></td>
-    <td><asp:TextBox ID="txt_Celular" runat="server"></asp:TextBox></td>
+    <td><asp:TextBox ID="txt_Celular" runat="server" MaxLength="20"></asp:TextBox></td>
     <td class="validador">
     </td>
     </tr>
