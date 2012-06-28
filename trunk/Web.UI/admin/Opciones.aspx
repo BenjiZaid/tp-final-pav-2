@@ -12,7 +12,6 @@
 <ul>
 <li><a href="ABM_CD.aspx?accion=agregar">Comprar Nuevo CD</a></li>
 <li><a href="ABM_CD.aspx?accion=modificar">Reponer Stock CD</a></li>
-<li><a href="ABM_CD.aspx?accion=eliminar">Eliminar CD</a></li>
 </ul>
 <h4>Artistas</h4>
 <ul>

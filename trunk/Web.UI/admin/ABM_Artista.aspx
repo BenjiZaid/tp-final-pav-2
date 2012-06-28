@@ -20,7 +20,8 @@
 
 <tr>
 <td style="text-align:right;"><asp:Label ID="lbl_Nombre" runat="server"></asp:Label></td>
-<td style="text-align:left;"><asp:TextBox ID="txt_Nombre" runat="server" Enabled="false"></asp:TextBox></td>
+<td style="text-align:left;"><asp:TextBox ID="txt_Nombre" runat="server" 
+        Enabled="false" MaxLength="50"></asp:TextBox></td>
 <td><asp:RequiredFieldValidator 
     ID="rfv_Nombre_Artista" 
     runat="server" 
@@ -33,7 +34,8 @@
 
 <tr>
 <td style="text-align:right;"><asp:Label ID="lbl_Apellido" runat="server" Text="Apellido: "></asp:Label></td>
-<td style="text-align:left;"><asp:TextBox ID="txt_Apellido" runat="server" Enabled="false"></asp:TextBox></td>
+<td style="text-align:left;"><asp:TextBox ID="txt_Apellido" runat="server" 
+        Enabled="false" MaxLength="50"></asp:TextBox></td>
 <td>
     <asp:Label ID="lbl_Valida_Apellido" runat="server" ForeColor="Red"></asp:Label>
 </td>    
@@ -45,13 +47,13 @@
 <td style="text-align:left;" width="240">
 <asp:Label ID="lbl_dia" runat="server" Text="Día: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_dia" runat="server" Enabled="false" Width="25px" 
-        ValidationGroup="fecha"></asp:TextBox> 
+        ValidationGroup="fecha" MaxLength="2"></asp:TextBox> 
 <asp:Label ID="lbl_mes" runat="server" Text="Mes: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_mes" runat="server" Enabled="false" Width="25px" 
-        ValidationGroup="fecha"></asp:TextBox>
+        ValidationGroup="fecha" MaxLength="2"></asp:TextBox>
 <asp:Label ID="lbl_año" runat="server" Text="Año: " Height="20px"></asp:Label>
 <asp:TextBox ID="txt_año" runat="server" Enabled="false" Width="40px" 
-        ValidationGroup="fecha"></asp:TextBox></td>
+        ValidationGroup="fecha" MaxLength="4"></asp:TextBox></td>
 <td>
 <asp:RequiredFieldValidator 
     ID="RequiredFieldValidator1" 
@@ -124,7 +126,7 @@
 </td>
 <td align="left" style="width: 395px">
     <asp:Label ID="Label5" runat="server" Height="20px" Text="Nombre "></asp:Label>
-    &nbsp;&nbsp; <asp:TextBox ID="txt_Buscar_Nombre" runat="server"></asp:TextBox></td>
+    &nbsp;&nbsp; <asp:TextBox ID="txt_Buscar_Nombre" runat="server" MaxLength="50"></asp:TextBox></td>
 </tr>
 
 <tr>

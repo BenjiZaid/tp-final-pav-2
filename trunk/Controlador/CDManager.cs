@@ -92,5 +92,22 @@ namespace Controlador
             string sql = "Select max(cod_CD) from CD";
             return DAO.AccesoDatos.ultimoId(sql);
         }
+
+        public static DataTable obtenerCDPorArtista(int artista)
+        {
+            string sql = "Select n.nombre as Nombre, g.nombre as Genero, n.año_Edicion 'Año de Edición', n.discografica as Discográfica";
+            sql += " from CD n join Genero g on n.cod_Genero = g.cod_Genero where n.cod_Artista = @artista order by n.nombre asc";
+            List<SqlParameter> param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@artista", artista));
+            return DAO.AccesoDatos.consultar(sql, param);
+        }
+
+        public static string obtenerID(string nombre)
+        {
+            string sql = "Select cod_CD from CD where nombre = @nombre";
+            List<SqlParameter> param = new List<SqlParameter>();
+            param.Add(new SqlParameter("@nombre", nombre));
+            return DAO.AccesoDatos.ejecutarEscalarString(sql, param);
+        }
     }
 }

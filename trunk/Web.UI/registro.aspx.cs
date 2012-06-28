@@ -66,8 +66,33 @@ namespace Web.UI
                 else
                 {
                     Controlador.ClienteManager.agregarRol(cliente);
+                    panel_after_registro.Visible = true;
+                    limpiarControles();
                 }
             }
+        }
+
+        protected void limpiarControles() 
+        {
+            txt_Username.Text = "";
+            txt_Password.Text = "";
+            txt_Pass_Confirm.Text="";
+            cmb_TipoDoc.SelectedIndex = cmb_TipoDoc.Items.Count - 1;
+            txt_Apellido.Text = "";
+            txt_Nombre.Text = "";
+            txt_dia.Text = "";
+            txt_mes.Text = "";
+            txt_año.Text = "";
+            cmb_Pais.SelectedIndex = cmb_Pais.Items.Count - 1;
+            cmb_Provincia.SelectedIndex = cmb_Provincia.Items.Count - 1;
+            cmb_Localidad.SelectedIndex = cmb_Localidad.Items.Count - 1;
+            cmb_Barrio.SelectedIndex = cmb_Barrio.Items.Count - 1;
+            txt_Domicilio.Text = "";
+            cmb_Sexo.SelectedIndex = cmb_Sexo.Items.Count - 1;
+            txt_Email.Text = "";
+            txt_Telefono.Text = "";
+            txt_Celular.Text = "";
+            txt_Documento.Text = "";
         }
 
         protected void cargarCombos()
@@ -167,6 +192,14 @@ namespace Web.UI
             cmb_Barrio.SelectedIndex = cmb_Barrio.Items.Count - 1;
 
 
+        }
+
+        protected void custom_Documento_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            if (txt_Documento.Text == "") args.IsValid = false;
+            else{
+                args.IsValid = true;
+            }
         }
     }
 }

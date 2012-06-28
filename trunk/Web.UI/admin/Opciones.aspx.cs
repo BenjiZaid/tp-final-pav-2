@@ -11,7 +11,14 @@ namespace Web.UI.admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["rol"].ToString().Equals("user"))
+            {
+                Response.Redirect("http://localhost:49166/OpcionesUsuario.aspx");
+            }
+            if (Session["rol"].ToString().Equals("?"))
+            {
+                Response.Redirect("http://localhost:49166/login.aspx");
+            }
         }
     }
 }

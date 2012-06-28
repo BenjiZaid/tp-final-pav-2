@@ -17,6 +17,14 @@ namespace Web.UI.admin
         {
             if (!IsPostBack)
             {
+                if (Session["rol"].ToString().Equals("user"))
+                {
+                    Response.Redirect("http://localhost:49166/OpcionesUsuario.aspx");
+                }
+                if (Session["rol"].ToString().Equals("?"))
+                {
+                    Response.Redirect("http://localhost:49166/login.aspx");
+                }
                 string accion = "";
 
                 pnl_BuscarProveedor.Visible = false;

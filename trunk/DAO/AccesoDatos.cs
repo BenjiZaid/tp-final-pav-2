@@ -146,6 +146,28 @@ namespace DAO
             return h;
         }
 
+        public static string ejecutarEscalarString(String sql, List<SqlParameter> lista)
+        {
+
+            Boolean h = false;
+            SqlConnection cn = conexion();
+            try
+            {
+                SqlCommand cm = new SqlCommand(sql, cn);
+                foreach (SqlParameter item in lista)
+                {
+                    cm.Parameters.Add(item);
+                }
+                return Convert.ToString(cm.ExecuteScalar());
+            }
+            catch (Exception e)
+            {
+                cn.Close();
+                Console.WriteLine(e.Message);
+                return "";
+            }
+        }
+
 
     }
 }

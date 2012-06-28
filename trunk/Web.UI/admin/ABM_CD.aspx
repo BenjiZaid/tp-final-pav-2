@@ -15,7 +15,8 @@
 
     <tr>
         <td align="right">Nombre del CD:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_NombreCD" runat="server"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_NombreCD" runat="server" 
+                MaxLength="50"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RequiredFieldValidator 
         ID="required_Nombre" 
@@ -34,7 +35,8 @@
 
     <tr>
         <td align="right">Año:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_AñoEdicion" runat="server" Width="40px"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_AñoEdicion" runat="server" 
+                Width="40px" MaxLength="4"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RangeValidator ID="RangeValidator" runat="server" 
         ControlToValidate="txt_añoEdicion" ErrorMessage="Ingrese un año válido" 
@@ -50,7 +52,8 @@
 
     <tr>
         <td align="right">Discografica:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_Discografica" runat="server"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_Discografica" runat="server" 
+                MaxLength="50"></asp:TextBox></td>
         <td class="validador"></td>
         <asp:RequiredFieldValidator 
         ID="RequiredFieldValidator1" 
@@ -73,15 +76,16 @@
 
     <tr>
         <td align="right">Nombre:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_NombrePista" runat="server"></asp:TextBox></td>
+        <td style="width: 171px"><asp:TextBox ID="txt_NombrePista" runat="server" Rows="50"></asp:TextBox></td>
         <td class="validador"></td>
     </tr>
         <tr>
         <td align="right">Duración:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_Minutos" runat="server" Width="30px"></asp:TextBox>&nbsp;<asp:Label 
+        <td style="width: 171px"><asp:TextBox ID="txt_Minutos" runat="server" Width="30px" 
+                MaxLength="3"></asp:TextBox>&nbsp;<asp:Label 
                 ID="Label7" runat="server" Height="20px" Text="Min."></asp:Label>
             &nbsp;
-            <asp:TextBox ID="txt_Segundos" runat="server" Width="30px"></asp:TextBox>
+            <asp:TextBox ID="txt_Segundos" runat="server" Width="30px" MaxLength="2"></asp:TextBox>
             <asp:Label ID="Label8" runat="server" Height="20px" Text="Seg."></asp:Label>
             </td>
         <td class="validador"></td>
@@ -142,21 +146,24 @@
 
          <tr>
         <td align="right">N° de ejemplares a comprar:</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_ejemplares" runat="server" Width="40px"></asp:TextBox>
+        <td style="width: 171px"><asp:TextBox ID="txt_ejemplares" runat="server" 
+                Width="40px" MaxLength="5"></asp:TextBox>
              </td>
         <td class="validador"></td>
 
     </tr>
     <tr>
         <td align="right">Precio de compra: $</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_precioCompra" runat="server" Width="40px"></asp:TextBox>
+        <td style="width: 171px"><asp:TextBox ID="txt_precioCompra" runat="server" 
+                Width="40px" MaxLength="6"></asp:TextBox>
              </td>
         <td class="validador"></td>
 
     </tr>
     <tr>
         <td align="right">Precio de venta: $</td>
-        <td style="width: 171px"><asp:TextBox ID="txt_precioVenta" runat="server" Width="40px"></asp:TextBox>
+        <td style="width: 171px"><asp:TextBox ID="txt_precioVenta" runat="server" 
+                Width="40px" MaxLength="6"></asp:TextBox>
              </td>
         <td class="validador"></td>
 

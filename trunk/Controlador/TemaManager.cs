@@ -107,6 +107,15 @@ namespace Controlador
 
 
         }
+
+        public static DataTable obtenerTemasTabla(int codigoCD)
+        {
+            String sql = "Select nroPista as 'N°', nombre as Nombre, duracion as Duración From Tema where cod_CD = @codigoCD";
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(new SqlParameter("@codigoCD", codigoCD));
+            return DAO.AccesoDatos.consultar(sql, parametros);
+           
+        }
     }
 }
 

@@ -2,8 +2,10 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
 <siteMapNode url="index.aspx" title="Inicio"  description="Inicio">
 <siteMapNode url="login.aspx" title="Iniciar Sesion" description="Inicio de sesión"/>
-<siteMapNode title="Gestion de Clientes"  description="Seleccione la gestion que desea realizar">
+  <siteMapNode url="login.aspx?accion=cerrar" title="Cerrar Session"  description="Cerrar Session" />
 <siteMapNode url="registro.aspx" title="Nuevo Usuario"  description="Registro de nuevo usuario" />
-</siteMapNode>
+  <siteMapNode url="admin/Opciones.aspx" title="Administracion"  description="Administracion" />
+  <siteMapNode url="OpcionesUsuario.aspx" title="Usuarios"  description="Usuarios" />
+  
 </siteMapNode>
 </siteMap>

@@ -18,6 +18,14 @@ namespace Web.UI.admin
         {
             if (!IsPostBack)
             {
+                if (Session["rol"].ToString().Equals("user"))
+                {
+                    Response.Redirect("http://localhost:49166/OpcionesUsuario.aspx");
+                }
+                if (Session["rol"].ToString().Equals("?"))
+                {
+                    Response.Redirect("http://localhost:49166/login.aspx");
+                }
                
                 ddl_Sexo.Visible = false;
                 txt_Apellido.Visible = false;

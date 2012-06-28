@@ -16,6 +16,14 @@ namespace Web.UI.admin
         {
             if (!Page.IsPostBack)
             {
+                if (Session["rol"].ToString().Equals("user"))
+                {
+                    Response.Redirect("http://localhost:49166/OpcionesUsuario.aspx");
+                }
+                if (Session["rol"].ToString().Equals("?"))
+                {
+                    Response.Redirect("http://localhost:49166/login.aspx");
+                }
                 RangeValidator.MaximumValue = DateTime.Today.ToString("yyyy");
                 pnl_AgregarCD.Visible = false;
                 pnl_Buscar.Visible = true;

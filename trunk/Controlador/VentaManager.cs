@@ -6,13 +6,14 @@ using Negocio;
 
 namespace Controlador
 {
-    class VentaManager
+    public class VentaManager
     {
         public static Boolean ventaCD(Negocio.Venta v)
         {
             Boolean b = false;
-            int id = DAO.AccesoDatos.ultimoId("Venta") + 1;
+            int id = DAO.AccesoDatos.ultimoId("Select max(cod_Venta) from Venta") + 1;
             v.CodVenta = id;
+
             b = DAO.Transaccion.venderCD(v);
             return b;
         }
@@ -29,6 +30,12 @@ namespace Controlador
                 return false;
             }
 
+        }
+
+        public static int obtenerUltimoId()
+        {
+            string consulta = "Select MAX(cod_Venta) From Venta";
+            return DAO.AccesoDatos.ultimoId(consulta);
         }
     }
 }
